@@ -1,14 +1,14 @@
-pagination {
+.pagination {
     margin: 15px auto;
     display: flex;
     list-style: none;
     outline: none;
-    justify-content: center;
+    justify-content: flex-end;
   }
   .pagination > .active > a{
-    background-color: #fff ;
-    border-color: #fff ;
-    color: #fff;
+    
+    border-color: #000 ;
+    color: #000;
   }
   .pagination > li > a{
     border: 1px solid #fff ;
@@ -17,8 +17,8 @@ pagination {
     cursor: pointer;
   }
   .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-    background-color: #fff ;
-    border-color: #fff;
+    
+    border-color: #000;
     outline: none ;
   }
   .pagination > li > a, .pagination > li > span{

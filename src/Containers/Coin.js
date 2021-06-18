@@ -1,7 +1,8 @@
 import React from 'react'
 import '../CSS/Coin.css'
 import {Button}  from 'react-bootstrap'
-const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap}) => {
+import { Link } from 'react-router-dom'
+const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId}) => {
     return (
 
 
@@ -16,7 +17,9 @@ const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap}) => {
       <td>{volume}</td>
       <td>{priceChange}</td>
       <td>{marketcap}</td>
-      <td><Button variant="primary">View</Button></td>
+      <td><Button variant="primary">
+        <Link  style={{color:'white'}}to={`/coins/${realId}`}>View</Link>
+        </Button></td>
     </tr>
   </tbody>
 

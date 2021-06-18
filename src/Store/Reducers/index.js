@@ -30,6 +30,7 @@ function CoinListReducers(state=initState,action){
                 ...state,
                 orgcoinList:action.coinList,
                 coinListSliced:action.coinListdata,
+                loading:false
             }
 
         default:
