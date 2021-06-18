@@ -1,0 +1,3 @@
+export const SET_LOADING='SET_LOADING'
+export const GET_ALL_DATA='GET_ALL_DATA'
+export const GET_ALL_DATA_SUCCESS='GET_ALL_DATA_SUCCESS'
