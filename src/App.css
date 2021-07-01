@@ -1,6 +1,15 @@
-.coin-app
-{
-  
+/* body{
+  background-color: #7666e4;
+}
+
+#root{
+  background-color: #7666e4;
+} */
+
+
+
+.table-dark.table-hover tbody tr:hover{
+  background-color: #7766e447!important;
 }
 
 

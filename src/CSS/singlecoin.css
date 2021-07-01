@@ -1,0 +1,5 @@
+#market_data p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
