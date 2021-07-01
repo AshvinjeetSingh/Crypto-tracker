@@ -5,7 +5,9 @@ const initState={
     coinListSliced:[],
     loading:false,
     errMsg:'',
-    count:1220
+    count:1220,
+    singlecoinData:[],
+    chartData:[]
 }
 
 function CoinListReducers(state=initState,action){
@@ -31,6 +33,32 @@ function CoinListReducers(state=initState,action){
                 orgcoinList:action.coinList,
                 coinListSliced:action.coinListdata,
                 loading:false
+            }
+
+        case ActionType.GET_SINGLE_COIN_DATA:
+            return{
+                ...state,
+                loading:true,
+                errMsg:''
+            }
+        case ActionType.GET_SINGLE_COIN_DATA_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                singlecoinData:action.data
+            }
+        case ActionType.GET_SINGLE_COIN_CHART:
+            return{
+                
+                ...state,
+                loading:true,
+                errMsg:''
+            }
+        case ActionType.GET_SINGLE_COIN_CHART_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                chartData:action.data
             }
 
         default:

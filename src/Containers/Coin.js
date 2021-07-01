@@ -2,13 +2,12 @@ import React from 'react'
 import '../CSS/Coin.css'
 import {Button}  from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId}) => {
+const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId,sparkline}) => {
     return (
-
+<>
 
         
-  <tbody>
-    <tr>
+  
       <td>{id}</td>
       <td><img src={image} alt="" style={{width:"100%",maxWidth:"35px"}}/></td>
       <td>{name}</td>
@@ -17,11 +16,11 @@ const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId}) 
       <td>{volume}</td>
       <td>{priceChange}</td>
       <td>{marketcap}</td>
+     
       <td><Button variant="primary">
         <Link  style={{color:'white'}}to={`/coins/${realId}`}>View</Link>
-        </Button></td>
-    </tr>
-  </tbody>
+        </Button></td> </>)
+  
 
         
                
@@ -58,7 +57,7 @@ const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId}) 
                
                
             
-    )
+    
     //     <div className="coin-container">
     //         <div className="coin-row">
     //             <Col xs lg="2">

@@ -1,13 +1,14 @@
 import React,{useEffect,useState} from 'react'
 import Table from 'react-bootstrap/Table';
-import { Container } from 'react-bootstrap';
+import { Container,Button } from 'react-bootstrap';
 import Coin from './Coin'
 import '../CSS/Paginate.css' 
 import {connect} from 'react-redux'
-import {GET_ALL_DATA} from '../Store/Actions/ActionType'
-import {getAllCoinList} from '../Store/Actions/Actions'
+import {getAllCoinList,getCoinChartData} from '../Store/Actions/Actions'
 import ReactPaginate from "react-paginate";
 import Loader from "react-loader-spinner";
+import Paginate from '../Components/Paginate'
+import { forEach } from 'lodash';
 const CoinsList = (props) => {
 // URL:https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false
 const {coinList,totalCount,loader}=props
@@ -18,9 +19,17 @@ const [currentPage,setCurrentPage]=useState(0)
 const [pageCount,setPageCount]=useState(0)
 const [tableData,setTableData]=useState([])
 const [orgTableData,setOrgTableData]=useState([])
-
+const [sortType,setSortType]=useState('asc')
+const changeOrder=()=>{
+  sortType==='asc'?setSortType('desc'):setSortType('asc')
+}
+const sorted=tableData.sort((a,b)=>{
+  const isReversed=(sortType==='asc')?1:-1
+  return isReversed*a.name.localeCompare(b.name)
+})
 const handlePageClick=(page)=>{
   props.getList(page)
+  // alert("hello")
 }
 const getData=()=> {
   var tdata = coinList;
@@ -31,10 +40,14 @@ const getData=()=> {
 };
 
 const getTableData=()=>{
-return tableData.map(coinid=>{
-return <Coin 
+return sorted.map(coinid=>{
+
+
+for(let i=0;i<sorted.length;i++) {
+  console.log("length is",sorted.length,i)
+return (<tr><Coin 
 key={coinid.id} 
-id={coinid.market_cap_rank}
+id={i}
 name={coinid.name} 
 image={coinid.image} 
 symbol={coinid.symbol.toUpperCase()} 
@@ -43,8 +56,9 @@ price={coinid.current_price.toLocaleString()}
 priceChange={coinid.price_change_percentage_24h}
 marketcap={coinid.market_cap.toLocaleString()}
 realId={coinid.id}
-/>
-})};
+// sparkline={coinid.market_cap_rank}
+/></tr>)
+}})};
 
 useEffect(()=>{
   handlePageClick(1)
@@ -56,14 +70,18 @@ useEffect(()=>{
   }
 },[coinList])
 
-
+// useEffect(()=>{
+//   var table = document.getElementsByTagName('table')
+//   var rows = table.getElementByTagName('tr')
+// console.log("table rows are",rows)
+// },[tableData])
 
     
     return (
         <div className="coin-app" >
           {/* <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} /> */}
         <Container fluid style={{margin:'35px 0px'}}>
-        <ReactPaginate
+        {/* <ReactPaginate
                 previousLabel={"prev"}
                 nextLabel={"next"}
                 breakLabel={"..."}
@@ -76,10 +94,17 @@ useEffect(()=>{
                 containerClassName={"pagination"}
                 subContainerClassName={"pages pagination"}
                 activeClassName={"active"}
-                />
-
+                /> */}
+          <div style={{marginLeft:'auto',textAlign:'right',marginBottom:'1rem'}}>
+                <span>Sort in:</span>
+                <select onChange={changeOrder} style={{padding:'5px 5px'}} >
+                  <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
+                  <option value="desc" style={{padding:'5px 5px'}}>Descending</option>
+                </select>
+          </div>
+        {/* <Button onClick={changeOrder}>Sort {sortType}</Button> */}
 {!loader ?
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="dark"id="coinTable">
         <thead>
           <tr>
             <th>Id</th>
@@ -93,28 +118,17 @@ useEffect(()=>{
             <th>Action</th>
           </tr>
         </thead>
-       
+       <tbody>
+      
         {getTableData()}
+       </tbody>
             
   
   
           </Table>:
           <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} />}
           
-          <ReactPaginate
-                previousLabel={"prev"}
-                nextLabel={"next"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={totalCount/20}
-                pageRangeDisplayed={2}
-                marginPagesDisplayed={1}
-                containerClassName={"pagination"}
-                onPageChange={(Data)=>handlePageClick(Data.selected+1)}
-                containerClassName={"pagination"}
-                subContainerClassName={"pages pagination"}
-                activeClassName={"active"}
-                />
+          <Paginate totalCount={totalCount} handlePageClick={(Data)=>handlePageClick(Data.selected+1)}/>
         </Container>
         
       </div>
@@ -131,7 +145,8 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
 return{
-  getList:(page)=>dispatch(getAllCoinList(page))
+  getList:(page)=>dispatch(getAllCoinList(page)),
+  
 }
 }
 
