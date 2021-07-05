@@ -36,3 +36,13 @@ export const getSingleCoinData=async(id)=>{
         console.error(e)
     }
 }
+
+export const getListAll=async()=>{
+    try{
+        const list=await API.get('/list')
+        return list
+    }
+    catch(e){
+        console.error(e)
+    }
+}
