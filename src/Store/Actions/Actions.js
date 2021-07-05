@@ -40,6 +40,18 @@ export const getSingleCoinData=(id)=>{
 export const getSingleCoinDataSuccess=(data)=>{
     return{
         type:ACTION_TYPES.GET_SINGLE_COIN_DATA_SUCCESS,
-        data:data,
+        data:data
+    }
+}
+
+export const getAllCoinDataForAutoSuggest=()=>{
+    return{
+        type:ACTION_TYPES.GET_ALL_COIN_DATA_FOR_AUTOSUGGEST
+    }
+}
+export const getAllCoinDataForAutoSuggestSuccess=(data)=>{
+    return{
+        type:ACTION_TYPES.GET_ALL_COIN_DATA_FOR_AUTOSUGGEST_SUCCESS,
+        data:data
     }
 }

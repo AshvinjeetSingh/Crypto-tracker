@@ -4,10 +4,11 @@ import { Container,Button } from 'react-bootstrap';
 import Coin from './Coin'
 import '../CSS/Paginate.css' 
 import {connect} from 'react-redux'
-import {getAllCoinList,getCoinChartData} from '../Store/Actions/Actions'
+import {getAllCoinList,getCoinChartData,getAllCoinDataForAutoSuggest} from '../Store/Actions/Actions'
 import ReactPaginate from "react-paginate";
 import Loader from "react-loader-spinner";
 import Paginate from '../Components/Paginate'
+import Autosuggest from '../Components/Autosuggest'
 import { forEach } from 'lodash';
 const CoinsList = (props) => {
 // URL:https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false
@@ -40,14 +41,14 @@ const getData=()=> {
 };
 
 const getTableData=()=>{
-return sorted.map(coinid=>{
+return sorted.map((coinid,index)=>{
 
 
 for(let i=0;i<sorted.length;i++) {
   console.log("length is",sorted.length,i)
 return (<tr><Coin 
 key={coinid.id} 
-id={i}
+id={index+1}
 name={coinid.name} 
 image={coinid.image} 
 symbol={coinid.symbol.toUpperCase()} 
@@ -62,6 +63,7 @@ realId={coinid.id}
 
 useEffect(()=>{
   handlePageClick(1)
+  // props.getAutoSuggestList()
   },[])
 
 useEffect(()=>{
@@ -69,14 +71,16 @@ useEffect(()=>{
     getData()
   }
 },[coinList])
-
+useEffect(()=>{
+  console.log(props.coinListData)
+},[props.coinListData])
 // useEffect(()=>{
 //   var table = document.getElementsByTagName('table')
 //   var rows = table.getElementByTagName('tr')
 // console.log("table rows are",rows)
 // },[tableData])
 
-    
+  
     return (
         <div className="coin-app" >
           {/* <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} /> */}
@@ -102,7 +106,9 @@ useEffect(()=>{
                   <option value="desc" style={{padding:'5px 5px'}}>Descending</option>
                 </select>
           </div>
+          {/* <Autosuggest/> */}
         {/* <Button onClick={changeOrder}>Sort {sortType}</Button> */}
+        
 {!loader ?
         <Table striped bordered hover variant="dark"id="coinTable">
         <thead>
@@ -135,18 +141,19 @@ useEffect(()=>{
     )
 }
 const mapStateToProps=(state)=>{
-  console.log("called from mapStatetoProps",state.CoinListReducers)
+  // console.log("called from mapStatetoProps",state.CoinListReducers)
   return{
     coinList: state.CoinListReducers ? state.CoinListReducers.orgcoinList :null,
     totalCount: state.CoinListReducers ? state.CoinListReducers.count :null,
-    loader:state.CoinListReducers? state.CoinListReducers.loading:null
+    loader:state.CoinListReducers? state.CoinListReducers.loading:null,
+    coinListData:state.CoinListReducers?state.CoinListReducers.autoSuggestData:null
   }
 }
 
 const mapDispatchToProps=(dispatch)=>{
 return{
   getList:(page)=>dispatch(getAllCoinList(page)),
-  
+  getAutoSuggestList:()=>dispatch(getAllCoinDataForAutoSuggest())
 }
 }
 

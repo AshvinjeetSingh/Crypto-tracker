@@ -17,9 +17,11 @@ const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId,sp
       <td>{priceChange}</td>
       <td>{marketcap}</td>
      
-      <td><Button variant="primary">
-        <Link  style={{color:'white'}}to={`/coins/${realId}`}>View</Link>
-        </Button></td> </>)
+      <td>
+        <Link  style={{color:'white',    'background': '#7666e4',
+    'padding': '10px 20px',
+    'border-radius':' 5px'}}to={`/coins/${realId}`}>View</Link>
+        </td> </>)
   
 
         

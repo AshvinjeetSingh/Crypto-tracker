@@ -7,7 +7,8 @@ const initState={
     errMsg:'',
     count:1220,
     singlecoinData:[],
-    chartData:[]
+    chartData:[],
+    autoSuggestData:[]
 }
 
 function CoinListReducers(state=initState,action){
@@ -60,6 +61,20 @@ function CoinListReducers(state=initState,action){
                 loading:false,
                 chartData:action.data
             }
+        case ActionType.GET_ALL_COIN_DATA_FOR_AUTOSUGGEST:{
+                return{
+                    ...state,
+                    loading:true
+                }
+            } 
+        case ActionType.GET_ALL_COIN_DATA_FOR_AUTOSUGGEST_SUCCESS:{
+            console.log("called from reducer",action.data.data)
+            return{
+                ...state,
+                loading:false,
+                autoSuggestData:action.data.data
+            }
+        } 
 
         default:
             return state
