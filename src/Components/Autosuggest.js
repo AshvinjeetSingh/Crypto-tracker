@@ -26,7 +26,7 @@ const Autosuggest = (props) => {
     props.getAutoSuggestList()
   },[])
   useEffect(()=>{
-    const data = props.coinListData.map((item)=>item.name.replace(/\s+/g, '-').replace(/\./g,'-'))
+    const data = props.coinListData.map((item)=>item.id.replace(/\s+/g, '-').replace(/\./g,'-').trim())
     // data = data 
     setCoins(data)
     console.log("data",coins)
