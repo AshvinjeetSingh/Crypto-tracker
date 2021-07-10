@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Navbar from  'react-bootstrap/Navbar'
 import {Button,Form,FormControl} from 'react-bootstrap'
 import Autosuggest from '../Components/Autosuggest'
-
+import '../CSS/Navbar.css'
 
 
 const NavbarTitle = () => {
@@ -18,7 +18,7 @@ const NavbarTitle = () => {
         <>
         <Navbar bg="dark" variant="dark" expand="lg" style={{justifyContent:"space-between"}}>
             <Navbar.Brand href="#home"> <img src="https://lh3.google.com/u/0/d/1i9DqfcP0c4TQMcrBeSy6J83nL5FiZDPe=w1904-h947-iv1" style={{width:'100%',filter:'invert(1)'}}/></Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar aria-controls="basic-navbar-nav" />
            
                 <Form inline style={{position:'relative'}}>
                 <Autosuggest/>
