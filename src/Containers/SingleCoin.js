@@ -47,7 +47,7 @@ const configPrice = props.ChartDataPrice ? {
   },
   chart: {
     height: 600,
-    width:1000
+    width:600
   },
   credits: {
     enabled: false
@@ -118,13 +118,10 @@ const configPrice = props.ChartDataPrice ? {
   
 
       {!props.loader && props.singlecoinData && props.ChartDataPrice?
-      <Container fluid>
+      <Container >
       <h1 style={{textAlign:'center',textTransform:'uppercase'}}>{id} stock price</h1>
-      <Row>
-<Col>
-<Row>
-        {/* basic info card starts */}
-      <Col>
+      <Row>   
+      <Col sticky="top">
         <Card style={{ width: '20rem' }}>
           <Card.Body >
             <Row style={{alignItems:'center'}}>
@@ -133,7 +130,7 @@ const configPrice = props.ChartDataPrice ? {
             </Row>
             <Card.Title>${props.singlecoinData.market_data.current_price.usd}<span style={{color:style,'padding':'0px 15px '}}>{props.singlecoinData.market_data.price_change_percentage_24h}%</span></Card.Title>
             <Card.Text>
-              <Row style={{justifyContent:'space-between'}}>
+              <Row>
                 <p style={{padding:'0px 10px'}}>Homepage</p>
                 <div style={{display:'flex',}}>
                   {props.singlecoinData.links.homepage.map((item)=>{             
@@ -172,12 +169,8 @@ const configPrice = props.ChartDataPrice ? {
             </Card.Text>
           </Card.Body>
         </Card>
-        </Col>
-        {/* basic info card ends */}
 
-        {/* market stats info strtas */}
-        <Col>
-            <Card style={{ width: '20rem' }}>
+        <Card style={{ width: '20rem' }}>
               <Card.Body>
                 <Card.Title style={{textTransform:'capitalize'}}> {id} Market Stats</Card.Title>
                 <Card.Text id="market_data">
@@ -196,11 +189,10 @@ const configPrice = props.ChartDataPrice ? {
               </Card.Body>
             </Card>
         </Col>
-
-        {/* markets stats info ends */}
-        </Row>
-        <Row>
-        <Table>
+        {/* Stock price chart started */}
+        <Col>
+          <ReactHighcharts config = {configPrice}></ReactHighcharts>
+          <Table>
            <thead>
              <tr>
              
@@ -221,12 +213,6 @@ const configPrice = props.ChartDataPrice ? {
              </tr>
            </tbody>
          </Table>
-        </Row>
-        </Col>    
-        
-        {/* Stock price chart started */}
-        <Col>
-          <ReactHighcharts config = {configPrice}></ReactHighcharts>
         </Col>
         {/* Stock price chart ends */}
         
@@ -235,6 +221,24 @@ const configPrice = props.ChartDataPrice ? {
         
          
         </Row>
+
+        <Col>
+<Row>
+        {/* basic info card starts */}
+      
+        {/* basic info card ends */}
+
+        {/* market stats info strtas */}
+        <Col  >
+            
+        </Col>
+
+        {/* markets stats info ends */}
+        </Row>
+        <Row>
+        
+        </Row>
+        </Col> 
        {/* price change info ends */}
       </Container>
         :
