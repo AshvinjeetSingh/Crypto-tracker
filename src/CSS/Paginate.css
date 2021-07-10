@@ -28,3 +28,8 @@
     border-radius: unset
   }
 
+  @media only screen and (max-width: 991px) {
+    .container-fluid{
+      padding:0px
+    }
+}

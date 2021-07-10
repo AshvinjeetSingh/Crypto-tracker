@@ -82,9 +82,16 @@ useEffect(()=>{
 
   
     return (
-        <div className="coin-app" >
+        <div className="coin-app" style={{overflow:'auto'}}>
+            <div style={{marginLeft:'auto',textAlign:'right',marginBottom:'1rem',marginTop:'1rem',paddingRight: '15px'}}>
+                <span>Sort in:</span>
+                <select onChange={changeOrder} style={{padding:'5px 5px'}} >
+                  <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
+                  <option value="desc" style={{padding:'5px 5px'}}>Descending</option>
+                </select>
+          </div>
           {/* <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} /> */}
-        <Container fluid style={{margin:'35px 0px'}}>
+        <Container fluid style={{margin:'35px 0px',overflow:'auto'}}>
         {/* <ReactPaginate
                 previousLabel={"prev"}
                 nextLabel={"next"}
@@ -99,13 +106,7 @@ useEffect(()=>{
                 subContainerClassName={"pages pagination"}
                 activeClassName={"active"}
                 /> */}
-          <div style={{marginLeft:'auto',textAlign:'right',marginBottom:'1rem'}}>
-                <span>Sort in:</span>
-                <select onChange={changeOrder} style={{padding:'5px 5px'}} >
-                  <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
-                  <option value="desc" style={{padding:'5px 5px'}}>Descending</option>
-                </select>
-          </div>
+        
           {/* <Autosuggest/> */}
         {/* <Button onClick={changeOrder}>Sort {sortType}</Button> */}
         

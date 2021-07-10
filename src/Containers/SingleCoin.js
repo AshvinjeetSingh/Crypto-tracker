@@ -133,15 +133,17 @@ const configPrice = props.ChartDataPrice ? {
             </Row>
             <Card.Title>${props.singlecoinData.market_data.current_price.usd}<span style={{color:style,'padding':'0px 15px '}}>{props.singlecoinData.market_data.price_change_percentage_24h}%</span></Card.Title>
             <Card.Text>
-              <Row>
+              <Row style={{justifyContent:'space-between'}}>
                 <p style={{padding:'0px 10px'}}>Homepage</p>
+                <div style={{display:'flex',}}>
                   {props.singlecoinData.links.homepage.map((item)=>{             
                     const val=item!='' && item.split('/')[2].split('.')
-                    console.log(val)
+                    
                     return(
                       item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={item}>{val.length=='2'?val[0]:val[1]}</a></Badge></p>
                     )
                   })}
+                  </div>
               </Row>
               <Row>
                 <p style={{padding:'0px 10px'}}>Websites</p>
