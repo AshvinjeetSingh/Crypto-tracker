@@ -15,6 +15,25 @@ const numberFormat = new Intl.NumberFormat('en-US', options);
 const [percentageChange,setPercentageChange] =useState('')
 
 
+
+useEffect(()=>{
+  props.getSingleCoinData(id) 
+},[])
+// useEffect(()=>{
+//   configPrice.setSize(600, 300);
+// },[])
+useEffect(()=>{
+  props.getCoinChartData(id,'usd','max')
+},[])
+
+const initValues={
+  coinName:props.singlecoinData ? props.singlecoinData.name: "hello" 
+}
+const [values,setValues]=useState(initValues)
+const {coinName}=values
+useEffect(()=>{
+  console.log(values)
+},[id])
 const configPrice = props.ChartDataPrice ? {    
   yAxis: [{
     offset: 20,
@@ -30,6 +49,7 @@ const configPrice = props.ChartDataPrice ? {
     },
   },
   ],
+  
   tooltip: {
     shared: true,
     formatter: function () {
@@ -47,7 +67,7 @@ const configPrice = props.ChartDataPrice ? {
   },
   chart: {
     height: 600,
-    width:600
+    
   },
   credits: {
     enabled: false
@@ -91,16 +111,30 @@ const configPrice = props.ChartDataPrice ? {
       valueDecimals: 2
     },
   }
-  ]
+  ],
+  responsive: {
+    rules: [{
+        condition: {
+         
+            maxWidth: 550
+        },
+        chartOptions: {
+            chart: {
+                height: 600,
+               
+            },
+            subtitle: {
+                text: null
+            },
+            navigator: {
+                enabled: false
+            }
+        }
+    }]
+}
 }:"loading..."
 
-  useEffect(()=>{
-    props.getSingleCoinData(id) 
-  },[])
-
-  useEffect(()=>{
-    props.getCoinChartData(id,'usd','max')
-  },[])
+ 
   const style=props.singlecoinData && props.singlecoinData.market_data.price_change_percentage_24h<0?'red':'green'
   const style2=props.singlecoinData && props.singlecoinData.market_data.ath_change_percentage.usd<0?'red':'green'
   const style3=props.singlecoinData && props.singlecoinData.market_data.atl_change_percentage.usd<0?'red':'green'
@@ -120,8 +154,8 @@ const configPrice = props.ChartDataPrice ? {
       {!props.loader && props.singlecoinData && props.ChartDataPrice?
       <Container >
       <h1 style={{textAlign:'center',textTransform:'uppercase'}}>{id} stock price</h1>
-      <Row>   
-      <Col sticky="top">
+      <Row className="justify-content-center">   
+      <Col  style={{ width: '20rem' }}  className="dataCards">
         <Card style={{ width: '20rem' }}>
           <Card.Body >
             <Row style={{alignItems:'center'}}>
@@ -170,7 +204,7 @@ const configPrice = props.ChartDataPrice ? {
           </Card.Body>
         </Card>
 
-        <Card style={{ width: '20rem' }}>
+        <Card style={{ width: '20rem',marginTop:'0.5rem' }} className="marketDataCard">
               <Card.Body>
                 <Card.Title style={{textTransform:'capitalize'}}> {id} Market Stats</Card.Title>
                 <Card.Text id="market_data">
@@ -191,8 +225,8 @@ const configPrice = props.ChartDataPrice ? {
         </Col>
         {/* Stock price chart started */}
         <Col>
-          <ReactHighcharts config = {configPrice}></ReactHighcharts>
-          <Table>
+          <ReactHighcharts config = {configPrice}/>
+          <Table bordered responsive>
            <thead>
              <tr>
              

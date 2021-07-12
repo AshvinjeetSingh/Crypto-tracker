@@ -4,23 +4,22 @@ import {Form} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {getAllCoinDataForAutoSuggest} from '../Store/Actions/Actions'
 import { Link } from 'react-router-dom'
-
+import { Icon} from '@iconify/react';
+import searchAlt from '@iconify/icons-el/search-alt';
+import {ListGroup} from 'react-bootstrap'
 import API from '../API/Api'
 import { set } from 'lodash'
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
+import Scrollbar from "react-scrollbars-custom";
 
 const Autosuggest = (props) => {
 
   const [value,setValue]=useState('')
   const [coins,setCoins]=useState([])
   const [matchCoins,setMatchCoins]=useState([])
-  const style={
-    "position":" absolute",
-    "left": '0rem',
-    "top": "4rem",
-    "right": "0rem",
-    "transform": "translate(-3rem, 0rem)",
-    'height':'12rem','maxHeight':'11rem','overflow-y':'auto','width':'14rem','max-width':'14rem'
-  }
+  
 
   useEffect(()=>{
     props.getAutoSuggestList()
@@ -57,15 +56,23 @@ const Autosuggest = (props) => {
       setMatchCoins([])
   }
 
-
+  
+  
+  
   const renderSuggestions=()=>{
     if(matchCoins.length<0){
       return <h1>No record found</h1>
     }
     else{
-      return <ul style={style}>
+      return <ul  className="ListCoins">
         {
-          matchCoins.map((item)=><li style={{background:'white',listStyle:'none',textDecoration:'none',color:'black',boxShadow:'10px 10px 10px 10px #1cqcqc1',padding:'5px'}}onClick={()=>suggestionSelectedValue(item)}><Link to={`/coins/${item.toString().toLowerCase()}`}>{item}</Link></li>)
+          matchCoins.map((item)=>{
+          return  <ListGroup>
+                    <ListGroup.Item action onClick={()=>suggestionSelectedValue(item)}>
+                        <Link to={`/coins/${item.toString().toLowerCase()}`}>{item}</Link>
+                    </ListGroup.Item>
+                  </ListGroup>
+            })
         }
       </ul>
     }
@@ -73,13 +80,18 @@ const Autosuggest = (props) => {
   
   return (
     <>
-    <Form.Group>
-      <Form.Control value={value} type="text" placeholder="Normal text" onChange={onTextChanged}/>
-    </Form.Group>
-    <ul>
-      {/* {props.coinListData.map((item)=><li>{item.name}</li>)} */}
-      {renderSuggestions()}
-    </ul>
+      <div  id="searchBar">
+      <input value={value} type="text" placeholder="Search Your Coin" onChange={onTextChanged} className="searchCoinInput"/>
+      {value.length>0 && 
+        
+          
+          renderSuggestions()
+        
+      }
+        <span id="searchIcon">
+          <Icon icon={searchAlt} style={{color: '#7666E4',fontSize: '30px'}} hFlip={true} />
+        </span>
+      </div>
     </>
   )
 }

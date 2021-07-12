@@ -1,0 +1,23 @@
+.sortDiv{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 15px ;
+}
+
+.sortIcon,.sortText{
+    margin-right: 5px;
+}
+.sortText{
+    color: #616161;
+}
+
+.sortMenu{
+    padding:5px 5px;
+    border-radius:25px;
+    border:1px solid #7666e4;
+    position: relative;
+    color: #616161;
+
+}
+

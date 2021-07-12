@@ -10,6 +10,9 @@ import Loader from "react-loader-spinner";
 import Paginate from '../Components/Paginate'
 import Autosuggest from '../Components/Autosuggest'
 import { forEach } from 'lodash';
+import { Icon, InlineIcon } from '@iconify/react';
+import bxSort from '@iconify/icons-bx/bx-sort';
+import '../CSS/Homepage.css'
 const CoinsList = (props) => {
 // URL:https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false
 const {coinList,totalCount,loader}=props
@@ -83,35 +86,21 @@ useEffect(()=>{
   
     return (
         <div className="coin-app" style={{overflow:'auto'}}>
-            <div style={{marginLeft:'auto',textAlign:'right',marginBottom:'1rem',marginTop:'1rem',paddingRight: '15px'}}>
-                <span>Sort in:</span>
-                <select onChange={changeOrder} style={{padding:'5px 5px'}} >
+            <div className="sortDiv">
+                <span className="sortIcon"><Icon icon={bxSort} style={{color: '#7666E4', fontSize: '19px'}} /></span>
+                <span className="sortText">Sort In</span>
+
+                <select onChange={changeOrder} className="sortMenu" >
                   <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
                   <option value="desc" style={{padding:'5px 5px'}}>Descending</option>
                 </select>
           </div>
-          {/* <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} /> */}
-        <Container fluid style={{margin:'35px 0px',overflow:'auto'}}>
-        {/* <ReactPaginate
-                previousLabel={"prev"}
-                nextLabel={"next"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={totalCount/20}
-                pageRangeDisplayed={2}
-                marginPagesDisplayed={1}
-                containerClassName={"pagination"}
-                onPageChange={(Data)=>handlePageClick(Data.selected+1)}
-                containerClassName={"pagination"}
-                subContainerClassName={"pages pagination"}
-                activeClassName={"active"}
-                /> */}
+         
+        <Container fluid style={{margin:'35px 0px'}}>
         
-          {/* <Autosuggest/> */}
-        {/* <Button onClick={changeOrder}>Sort {sortType}</Button> */}
         
 {!loader ?
-        <Table striped bordered hover variant="dark"id="coinTable">
+        <Table striped bordered hover variant="dark"id="coinTable" responsive>
         <thead>
           <tr>
             <th>Id</th>
