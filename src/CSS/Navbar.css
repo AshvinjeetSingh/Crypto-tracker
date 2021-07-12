@@ -1,12 +1,131 @@
 .form-inline .form-group{
-    margin-bottom:0px!important
+    margin-bottom:0px!important;
+}
+.navbar{
+    justify-content: space-between;
+    background:#7666E4;
+    max-height: 80px;
+    height:80px;
+}
+.navbar-brand img{
+    width:'100%';
+    filter:invert(1);
 }
 
+.searchCoinInput{
+    width:280px;
+    max-width: 280px;
+    height:40px;
+    max-height: 40px;
+    border-radius: 25px;
+    border:0px;
+    position: relative;
+    padding:0 15px
+}
+
+.searchCoinInput::placeholder{
+    text-align: left;
+    font-size: 16px;
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ListCoins{
+    position: absolute;
+    height: 12rem;
+    max-height: 11rem;
+    overflow-y: auto;
+    width: 17rem;
+    max-width: 17rem;
+    padding: 0px;
+    background-color: #C4C4C4;
+    border-radius: 11px;
+}
+
+#searchBar{
+    position: relative;
+    margin:0 20px;
+}
+#searchBar>ul:focus-visible {
+    outline: 0!important;
+}
+
+#searchIcon{
+    position: absolute;
+    right: 5px;
+    top: 4px
+}
+
+.autoSuggestValues:hover{
+    color:#7666E4
+}
+
+.toggleSwitch{
+    background: #eee;
+    border: 1px solid 7666E4;
+    height: 39px;
+    width: 72px;
+    border-radius: 28px;
+    position: relative;
+    z-index:0
+}
+.toggleSwitchDark{
+    background: #515151;
+    border: 1px solid 7666E4;
+    height: 39px;
+    width: 72px;
+    border-radius: 28px;
+    position: relative;
+    z-index:0
+}
+
+.knobLight{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 0px;
+    background: #C4C4C4;
+    border-radius: 50%;
+    left: 0.4em;
+    top:49%;
+    /* transform: translate(-0.5em,-50%); */
+    transform: translateY(-50%);
+
+    transition: left 0.3s ease-out;}
+.knobDark{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #7D7979;
+    border: 0px;
+    border-radius: 50%;
+    transition: left 0.3s ease-out;
+    left: 2.7em;
+    top: 49%;
+    transform: translateY(-50%);
+    z-index: 9999;
+}
+.sunIcon{
+    position: absolute;
+    left:0.2em;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease-out;
+}
+.moonIcon{
+    position: absolute;
+    left: 1.15em;
+    z-index:99;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease-out;
+}
+    
 @media only screen and (max-width: 574px) {
     .navbar-brand{
         margin: auto;
     }
-    .form-inline {
-        margin: auto;
-    }
+    
 }

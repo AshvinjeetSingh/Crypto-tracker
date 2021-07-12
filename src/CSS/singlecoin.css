@@ -3,3 +3,29 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.table>tr>td{
+    border: 1px solid black!important;
+}
+.dataCards{
+    margin-right: 6rem;
+}
+.col{
+    flex:0!important
+}
+
+#highcharts-yeup7vy-9515{
+    width:550px;
+}
+
+@media screen and (max-width:1200px){
+    .dataCards{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+    .marketDataCard{
+        margin-top: 0px!important;
+        margin-left: 0.5rem;
+    }
+}
