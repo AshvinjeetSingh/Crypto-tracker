@@ -12,7 +12,6 @@ function keepTheme() {
     }
   } else {
     setTheme('theme-dark')
-    
   }
 }
 

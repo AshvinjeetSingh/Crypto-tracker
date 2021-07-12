@@ -2,7 +2,7 @@
     --dark-text: #DFDFDF;
     --light-text: #DFDFDF;  
     --dark-background: #515151;
-    --light-background: #dee2e6;
+    --light-background: #515151;
     
   }
 
@@ -17,18 +17,10 @@
     background-color: var(--dark-background);
     color: var(--dark-text);
   }
-  #coinTable thead,.sortText{
+  #coinTable thead{
     background-color: var(--dark-background);
     color: var(--dark-text);
     border: 0px;
-  }
-
-  .searchCoinInput::placeholder{
-    color: var(--dark-text);
-  }
-  .searchCoinInput{
-    background-color: var(--dark-background);
-    color: var(--dark-text);
   }
 
   #coinTable thead th{
