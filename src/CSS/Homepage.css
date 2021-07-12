@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 15px ;
+    margin: 15px 30px;
 }
 
 .sortIcon,.sortText{
@@ -20,4 +20,20 @@
     color: #616161;
 
 }
+
+.sortMenu>option{
+    border:0;
+}
+
+#coinTable thead{
+    background-color: #EBE4E4;
+    color:#616161
+}
+
+.table-dark.table-hover tbody tr:hover{
+    background-color: #7766e447!important;
+  }
+  
+  
+ 
 
