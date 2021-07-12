@@ -20,16 +20,28 @@
     border-radius: 25px;
     border:0px;
     position: relative;
+    padding:0 15px
 }
 
 .searchCoinInput::placeholder{
-    color:#BDBDBD;
     text-align: left;
-    font-size: 18px;
+    font-size: 16px;
     position: absolute;
     left: 1em;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.ListCoins{
+    position: absolute;
+    height: 12rem;
+    max-height: 11rem;
+    overflow-y: auto;
+    width: 17rem;
+    max-width: 17rem;
+    padding: 0px;
+    background-color: #C4C4C4;
+    border-radius: 11px;
 }
 
 #searchBar{
@@ -44,6 +56,10 @@
     position: absolute;
     right: 5px;
     top: 4px
+}
+
+.autoSuggestValues:hover{
+    color:#7666E4
 }
 
 .toggleSwitch{

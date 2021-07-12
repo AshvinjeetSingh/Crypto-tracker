@@ -1,0 +1,43 @@
+.theme-dark {
+    --dark-text: #DFDFDF;
+    --light-text: #DFDFDF;  
+    --dark-background: #515151;
+    --light-background: #515151;
+    
+  }
+
+  .theme-light {
+    --dark-text: #616161;
+    --light-text: #616161;
+    --dark-background: #EBE4E4;
+    --light-background: #dee2e6;
+  }
+
+  html, #root {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+  }
+  #coinTable thead{
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+    border: 0px;
+  }
+
+  #coinTable thead th{
+   
+    border: 0px;
+  }
+  
+
+  #coinTable td{
+    border: 0px;
+    color: var(--dark-text);
+  }
+  /* nav {
+    background-color: var(--dark-background);
+    color: var(--light-text);
+  } */
+  
+  .main-container {
+    background-color: var(--light-background);
+  }

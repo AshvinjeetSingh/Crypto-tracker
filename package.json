@@ -27,10 +27,12 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-scrollbars-custom": "^4.0.25",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-saga": "^1.1.3",
     "simplebar-react": "^2.3.4",
+    "styled-components": "^5.3.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -61,7 +63,9 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-bx": "^1.1.0",
     "@iconify/icons-el": "^1.1.0",
+    "@iconify/icons-fluent": "^1.1.22",
     "@iconify/icons-jam": "^1.1.0",
     "@iconify/react": "^1.1.4"
   }
