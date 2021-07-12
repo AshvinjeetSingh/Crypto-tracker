@@ -91,7 +91,7 @@ useEffect(()=>{
                 </select>
           </div>
           {/* <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} /> */}
-        <Container fluid style={{margin:'35px 0px',overflow:'auto'}}>
+        <Container fluid style={{margin:'35px 0px'}}>
         {/* <ReactPaginate
                 previousLabel={"prev"}
                 nextLabel={"next"}
@@ -111,7 +111,7 @@ useEffect(()=>{
         {/* <Button onClick={changeOrder}>Sort {sortType}</Button> */}
         
 {!loader ?
-        <Table striped bordered hover variant="dark"id="coinTable">
+        <Table striped bordered hover variant="dark"id="coinTable" responsive>
         <thead>
           <tr>
             <th>Id</th>
