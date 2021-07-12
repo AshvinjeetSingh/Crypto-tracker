@@ -3,25 +3,34 @@ import '../CSS/Coin.css'
 import {Button}  from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 const Coin = ({id,name,image,symbol,price,volume,priceChange,marketcap,realId,sparkline}) => {
+    
     return (
 <>
 
         
   
-      <td>{id}</td>
-      <td><img src={image} alt="" style={{width:"100%",maxWidth:"35px"}}/></td>
-      <td>{name}</td>
-      <td>{symbol}</td>
+      <td >{id}</td>
+
+      <td>
+          <span>
+            <img src={image} alt="" style={{width:"100%",maxWidth:"35px"}}/>   
+                {name}
+            </span>
+        </td>
+        <td>
+            {symbol}
+        </td>
       <td>{price}</td>
       <td>{volume}</td>
       <td>{priceChange}</td>
       <td>{marketcap}</td>
      
-      <td>
+      {/* <td>
         <Link  style={{color:'white',    'background': '#7666e4',
     'padding': '10px 20px',
     'border-radius':' 5px'}}to={`/coins/${realId}`}>View</Link>
-        </td> </>)
+        </td>  */}
+        </>)
   
 
         

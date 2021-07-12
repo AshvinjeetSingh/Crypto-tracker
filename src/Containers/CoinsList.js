@@ -13,6 +13,8 @@ import { forEach } from 'lodash';
 import { Icon, InlineIcon } from '@iconify/react';
 import bxSort from '@iconify/icons-bx/bx-sort';
 import '../CSS/Homepage.css'
+import { useHistory } from "react-router-dom";
+
 const CoinsList = (props) => {
 // URL:https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false
 const {coinList,totalCount,loader}=props
@@ -24,6 +26,7 @@ const [pageCount,setPageCount]=useState(0)
 const [tableData,setTableData]=useState([])
 const [orgTableData,setOrgTableData]=useState([])
 const [sortType,setSortType]=useState('asc')
+const [count,setCount]=useState(0)
 const changeOrder=()=>{
   sortType==='asc'?setSortType('desc'):setSortType('asc')
 }
@@ -34,7 +37,16 @@ const sorted=tableData.sort((a,b)=>{
 const handlePageClick=(page)=>{
   props.getList(page)
   // alert("hello")
+  setCount((prevState)=>prevState+1)
+  console.log(count
+    )
 }
+
+const history = useHistory();
+const handleClick=()=> {
+        // history.push(`/coins/${tableData.id}`);
+        
+      }
 const getData=()=> {
   var tdata = coinList;
   var slice = tdata.slice(offset, offset + perPage)
@@ -46,12 +58,14 @@ const getData=()=> {
 const getTableData=()=>{
 return sorted.map((coinid,index)=>{
 
-
+const idkey=(count*100)-100+index+1
 for(let i=0;i<sorted.length;i++) {
-  console.log("length is",sorted.length,i)
-return (<tr><Coin 
+ 
+return (<tr onClick={()=>{
+  history.push(`/coins/${coinid.id}`)
+}}><Coin 
 key={coinid.id} 
-id={index+1}
+id={idkey}
 name={coinid.name} 
 image={coinid.image} 
 symbol={coinid.symbol.toUpperCase()} 
@@ -74,9 +88,9 @@ useEffect(()=>{
     getData()
   }
 },[coinList])
-useEffect(()=>{
-  console.log(props.coinListData)
-},[props.coinListData])
+// useEffect(()=>{
+//   console.log(props.coinListData)
+// },[props.coinListData])
 // useEffect(()=>{
 //   var table = document.getElementsByTagName('table')
 //   var rows = table.getElementByTagName('tr')
@@ -100,18 +114,17 @@ useEffect(()=>{
         
         
 {!loader ?
-        <Table striped bordered hover variant="dark"id="coinTable" responsive>
+        <Table striped bordered hover id="coinTable" responsive>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>Name</th>
+            <th>#</th>
+            <th>Coin</th>
             <th>Symbol</th>
             <th>Price</th>
             <th>Volume</th>
-            <th>PriceChange</th>
             <th>Market Cap</th>
-            <th>Action</th>
+            <th>PriceChange</th>
+            {/* <th>Action</th> */}
           </tr>
         </thead>
        <tbody>
