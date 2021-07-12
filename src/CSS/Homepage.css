@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 15px ;
+    margin: 15px 30px;
 }
 
 .sortIcon,.sortText{

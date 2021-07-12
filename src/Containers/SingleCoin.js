@@ -24,6 +24,7 @@ useEffect(()=>{
 // },[])
 useEffect(()=>{
   props.getCoinChartData(id,'usd','max')
+
 },[])
 
 const initValues={

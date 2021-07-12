@@ -8,11 +8,19 @@ import moonSolid from '@iconify/icons-clarity/moon-solid';
 import '../CSS/Navbar.css'
 import '../CSS/toggle.css';
 import image from '../Images/Logo.png'
-import { setTheme   } from '../Components/Theme-context'
-const NavbarTitle = () => {
-    
+import { useHistory,useLocation } from "react-router-dom";
 
-  
+import { setTheme   } from '../Components/Theme-context'
+
+const NavbarTitle = (props) => {
+    
+  let history = useHistory();
+  const location = useLocation();
+  const pathName = location.pathname;
+  useEffect(()=>{
+    console.log("props",pathName)
+  },[])
+  // const location=props && props.history && props.history.location.pathName
   const [search,setSearch]=useState("")
   const [isToggleOn,setIsToggleOn]=useState('dark')
   let theme = localStorage.getItem('theme');
@@ -43,7 +51,9 @@ const NavbarTitle = () => {
             </Navbar.Brand>
             
                 <div style={{display:'flex'}}>
-                <Autosuggest/>
+                  {
+                    pathName=='/' && <Autosuggest coinId={props.coinId}/>
+                  }
                 
                 <span>
                 <div className={isToggleOn=='light' ? 'toggleSwitch' :'toggleSwitchDark'} onClick={handleClick} >

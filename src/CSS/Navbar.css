@@ -24,9 +24,8 @@
 }
 
 .searchCoinInput::placeholder{
-    color:#a196f3;
     text-align: left;
-    font-size: 18px;
+    font-size: 16px;
     position: absolute;
     left: 1em;
     top: 50%;
@@ -41,6 +40,8 @@
     width: 17rem;
     max-width: 17rem;
     padding: 0px;
+    background-color: #C4C4C4;
+    border-radius: 11px;
 }
 
 #searchBar{
@@ -55,6 +56,10 @@
     position: absolute;
     right: 5px;
     top: 4px
+}
+
+.autoSuggestValues:hover{
+    color:#7666E4
 }
 
 .toggleSwitch{

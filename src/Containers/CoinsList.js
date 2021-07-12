@@ -12,9 +12,75 @@ import Autosuggest from '../Components/Autosuggest'
 import { forEach } from 'lodash';
 import { Icon, InlineIcon } from '@iconify/react';
 import bxSort from '@iconify/icons-bx/bx-sort';
+import arrowSort24Filled from '@iconify/icons-fluent/arrow-sort-24-filled';
 import '../CSS/Homepage.css'
 import { useHistory } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import styled from "styled-components";
+const options = ["Ascending", "Descending"];
+const Main = styled("div")`
+  font-family: sans-serif;
+  background: #f0f0f0;
+  height: 100vh;
+`;
 
+const DropDownContainer = styled("div")`
+  
+  width:95px;
+  height:28px;
+  // padding: 0.4em 2em 0.4em 1em;
+
+`;
+
+const DropDownHeader = styled("div")`
+  padding: 5px 5px 5px 10px;
+  font-size: 16px;
+  color: #7666e4;
+  background: #ebe4e4;
+  border:1px solid #7666e4;
+  border-radius:25px;
+  height:28px;
+  width:105px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+`;
+
+const DropDownListContainer = styled("div")``
+
+;
+
+const DropDownList = styled("ul")`
+  padding: 0;
+  margin-top: 2.5px;
+  // border:1px solid #7666e4;
+  background: #C4C4C4;
+  width:105px;
+  box-sizing: border-box;
+  color: #7666e4;
+  font-size: 16px;
+  font-weight: 500;
+  height:70px;
+  border-radius:11px;
+  &:first-child {
+    padding-top: 0.5em;
+  }
+`;
+
+const ListItem = styled("li")`
+  list-style: none;
+  margin: 2.5px auto; 
+  background: #E8E8E8;
+  text-align:center;
+  width:90px;
+  border-radius:25px;
+  color:#b1afaf;
+  &:hover{
+    color:#7666e4;
+    cursor:pointer;
+  }
+
+`;
 const CoinsList = (props) => {
 // URL:https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false
 const {coinList,totalCount,loader}=props
@@ -27,9 +93,27 @@ const [tableData,setTableData]=useState([])
 const [orgTableData,setOrgTableData]=useState([])
 const [sortType,setSortType]=useState('asc')
 const [count,setCount]=useState(0)
+const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+const location = useLocation()
+
+const toggling = () => {
+  setIsOpen(!isOpen)
+  // changeOrder()
+};
+
+const onOptionClicked = value => () => {
+  setSelectedOption(value);
+  setIsOpen(false);
+  console.log(selectedOption);
+ changeOrder()
+};
 const changeOrder=()=>{
   sortType==='asc'?setSortType('desc'):setSortType('asc')
 }
+
+
+ 
 const sorted=tableData.sort((a,b)=>{
   const isReversed=(sortType==='asc')?1:-1
   return isReversed*a.name.localeCompare(b.name)
@@ -54,7 +138,12 @@ const getData=()=> {
   setTableData(slice)
   setOrgTableData(tdata)
 };
-
+// const renderList=()=>{
+//   return <>
+//     <optio  style={{padding:'5px',margin:'0'}}>Ascending</optio>
+//     <p  style={{padding:'5px',margin:'0'}}>Descending</p>
+//   </>
+// }
 const getTableData=()=>{
 return sorted.map((coinid,index)=>{
 
@@ -69,7 +158,7 @@ id={idkey}
 name={coinid.name} 
 image={coinid.image} 
 symbol={coinid.symbol.toUpperCase()} 
-volume={coinid.total_volume}
+volume={coinid.total_volume.toLocaleString()}
 price={coinid.current_price.toLocaleString()}
 priceChange={coinid.price_change_percentage_24h}
 marketcap={coinid.market_cap.toLocaleString()}
@@ -81,6 +170,7 @@ realId={coinid.id}
 useEffect(()=>{
   handlePageClick(1)
   // props.getAutoSuggestList()
+  
   },[])
 
 useEffect(()=>{
@@ -88,6 +178,8 @@ useEffect(()=>{
     getData()
   }
 },[coinList])
+
+
 // useEffect(()=>{
 //   console.log(props.coinListData)
 // },[props.coinListData])
@@ -101,13 +193,29 @@ useEffect(()=>{
     return (
         <div className="coin-app" style={{overflow:'auto'}}>
             <div className="sortDiv">
-                <span className="sortIcon"><Icon icon={bxSort} style={{color: '#7666E4', fontSize: '19px'}} /></span>
+                {/* <span className="sortIcon"><Icon icon={bxSort} style={{color: '#7666E4', fontSize: '19px'}} /></span> */}
                 <span className="sortText">Sort In</span>
-
-                <select onChange={changeOrder} className="sortMenu" >
-                  <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
-                  <option value="desc" style={{padding:'5px 5px'}}>Descending</option>
-                </select>
+                <DropDownContainer>
+        <DropDownHeader onClick={toggling} >
+          {selectedOption || "Ascending"}
+          <span><Icon icon={arrowSort24Filled} style={{color: '#7666E4', fontSize: '17px'}} /></span>
+        </DropDownHeader>
+        {isOpen && (
+          <DropDownListContainer>
+            <DropDownList>
+              {options.map(option => (
+                <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
+                  {option}
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
+        )}
+      </DropDownContainer>
+                {/* <select onChange={changeOrder} className="sortMenu" > */}
+                  {/* <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
+                  <option value="desc" style={{padding:'5px 5px'}}>Descending</option> */}
+                {/* </select> */}
           </div>
          
         <Container fluid style={{margin:'35px 0px'}}>
