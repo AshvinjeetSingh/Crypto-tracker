@@ -1,3 +1,40 @@
+.grid-container {
+    padding:10px;
+    display: grid;
+    grid-template-columns:auto 250px 250px auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-gap: 10px;
+    justify-content: space-evenly;
+    grid-template-areas: 
+    ". card1 card1 table table ."
+    ".  card1 card1 graph graph ."
+    ".  card2 card2 graph graph .";
+    overflow-y: hidden;
+  }
+  .card1{
+      grid-area: card1!important;
+      /* max-height: 50%; */
+  }
+  .card2{
+      grid-area :card2!important;
+  }
+
+  .graph{
+      grid-area: graph!important;
+  }
+  .table-responsive{
+      grid-area: table!important;
+  }
+  .space{
+      grid-area:'space'
+  }
+  .grid-container > .row {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px;
+  }
+
 #market_data p{
     display: flex;
     justify-content: space-between;
@@ -10,12 +47,49 @@
 .dataCards{
     margin-right: 6rem;
 }
+
+.dataCards .card{
+    border-radius: 5px!important;
+    border: 1.5px solid rgb(118 102 228);
+    background-color: #ebe4e4;
+    padding: 10px 10px;
+}
+.dataCards>.card>.col{
+    max-width: 50%;
+    width:15rem;
+}
+
+.left-wrapper.col {
+    flex: 0.2 0 !important;
+    padding: 0;
+}
+
+.right-wrapper.col {
+    flex: 1 1 !important;
+    padding: 0;
+
+}
+.dataCards .card .badge{
+   text-transform: capitalize;
+   background-color: rgb(118 102 228);
+}
 .col{
     flex:0!important
 }
 
 #highcharts-yeup7vy-9515{
     width:550px;
+}
+nav>.breadcrumb{
+    background-color: #d2cbcb;
+}
+
+nav>.breadcrumb>li.breadcrumb-item a{
+    color:#7666e4
+}
+nav .breadcrumb>li:nth-child(2) a{
+   
+    color:#000!important;
 }
 
 @media screen and (max-width:1200px){
