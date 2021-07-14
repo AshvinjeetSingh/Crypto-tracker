@@ -6,6 +6,7 @@ import {Breadcrumb,Row,Col,Container,Card,Button,Badge,Table} from 'react-bootst
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 import  {getSingleCoinData,getCoinChartData} from '../Store/Actions/Actions'
+import {withGetScreen} from 'react-getscreen'
 import '../CSS/singlecoin.css'
 const SingleCoin = (props) => {
 
@@ -13,9 +14,19 @@ const id=props.match.params.id
 const options = {style: 'currency', currency: 'USD'};
 const numberFormat = new Intl.NumberFormat('en-US', options);
 const [percentageChange,setPercentageChange] =useState('')
+// useEffect(() => {
+//   window.addEventListener('resize', () => {
+//     const myWidth  = window.innerWidth;
+    
+//     document.getElementsByClassName('highcharts-container').style.width=myWidth
+//     console.log('my width :::', myWidth)
+//  })
+// },[window])
 
-
-
+// useEffect(()=>{
+// const x = props.ChartDataPrice ? document.getElementById('highcharts-3ub2489-0').style.width="30%" : "hello there"
+// console.log(x)
+// },[window.innerWidth])
 useEffect(()=>{
   props.getSingleCoinData(id) 
 },[])
@@ -31,6 +42,7 @@ const initValues={
   coinName:props.singlecoinData ? props.singlecoinData.name: "hello" 
 }
 const [values,setValues]=useState(initValues)
+// const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 const {coinName}=values
 useEffect(()=>{
   console.log(values)
@@ -68,8 +80,10 @@ const configPrice = props.ChartDataPrice ? {
   },
   chart: {
     height: 600,
+    width:700
     
   },
+  containerProps:{ className: "test-class" },
   credits: {
     enabled: false
   },
@@ -141,7 +155,9 @@ const configPrice = props.ChartDataPrice ? {
   const style3=props.singlecoinData && props.singlecoinData.market_data.atl_change_percentage.usd<0?'red':'green'
   
     return (
+      
       <div>
+        
         {/* bread crumbds started */}
         <Breadcrumb>
         <Breadcrumb.Item ><Link to="/">Home</Link></Breadcrumb.Item>
@@ -153,59 +169,93 @@ const configPrice = props.ChartDataPrice ? {
   
 
       {!props.loader && props.singlecoinData && props.ChartDataPrice?
-      <Container >
-      <h1 style={{textAlign:'center',textTransform:'uppercase'}}>{id} stock price</h1>
-      <Row className="justify-content-center">   
-      <Col  style={{ width: '20rem' }}  className="dataCards">
-        <Card style={{ width: '20rem' }}>
+      <div className="grid-container">
+        <div className="space"> </div>
+        <Card className="card1">
           <Card.Body >
             <Row style={{alignItems:'center'}}>
+              <Col className="d-flex">
               <Card.Title style={{padding:'0px 10px'}}><img src={props.singlecoinData.image.thumb}/></Card.Title>
               <Card.Title>{props.singlecoinData.name}({props.singlecoinData.symbol})</Card.Title>  
+              </Col>
+              
             </Row>
-            <Card.Title>${props.singlecoinData.market_data.current_price.usd}<span style={{color:style,'padding':'0px 15px '}}>{props.singlecoinData.market_data.price_change_percentage_24h}%</span></Card.Title>
+            
             <Card.Text>
+
               <Row>
-                <p style={{padding:'0px 10px'}}>Homepage</p>
-                <div style={{display:'flex',}}>
+                <Col md={3}auto className="d-flex">
+                  <p>{props.singlecoinData.market_data.current_price.usd}</p>
+                </Col>
+                <Col md={9}>
+                  <p style={{color:style}}>{props.singlecoinData.market_data.price_change_percentage_24h}%</p>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={3}className="left-wrapper">
+                  <p >Homepage</p>
+                </Col>
+                <Col md={9} className="right-wrapper">
+               
                   {props.singlecoinData.links.homepage.map((item)=>{             
                     const val=item!='' && item.split('/')[2].split('.')
                     
                     return(
                       item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={item}>{val.length=='2'?val[0]:val[1]}</a></Badge></p>
-                    )
-                  })}
-                  </div>
+                      )
+                    })}
+                  
+                </Col>
               </Row>
-              <Row>
-                <p style={{padding:'0px 10px'}}>Websites</p>
-                {props.singlecoinData.links.blockchain_site.map((item)=>{  
-                  const val=item!='' && item.split('/')[2].split('.')[0]     
-                  return(
-                    item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={item}>{val}</a></Badge></p>
-                  )
-                })}  
+              <Row className="flex-nowrap">
+                <Col md={3} className="left-wrapper">
+                  <p >Websites</p>
+                </Col>
+                <Col md={9} className="d-flex right-wrapper">
+                  
+                    {props.singlecoinData.links.blockchain_site.map((item)=>{  
+                      const val=item!='' && item.split('/')[2].split('.')[0]     
+                      return(
+                        item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={item}>{val}</a></Badge></p>
+                        )
+                      })}
+                   
+                </Col>
               </Row>
-              <Row>
-                <p>Community</p>
-                <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={`https://twitter.com/${props.singlecoinData.links.twitter_screen_name}`}>Twitter</a></Badge></p>
 
-                <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.subreddit_url}>Reddit</a></Badge></p>
+              <Row className="flex-nowrap">
+                <Col md={3} className="left-wrapper ">
+                  <p>Community</p>
+                </Col>
+                <Col md={9} className="d-flex right-wrapper">
+                  
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={`https://twitter.com/${props.singlecoinData.links.twitter_screen_name}`}>Twitter</a></Badge></p>
 
-                <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={`https://www.facebook.com/${props.singlecoinData.links.facebook_username}/`}>Facebook</a></Badge></p>
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.subreddit_url}>Reddit</a></Badge></p>
 
-                <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.official_forum_url[0]}>bitcointalk.org</a></Badge></p>
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={`https://www.facebook.com/${props.singlecoinData.links.facebook_username}/`}>Facebook</a></Badge></p>
+
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.official_forum_url[0]}>bitcointalk.org</a></Badge></p>
+                 
+                </Col>
+                  
 
               </Row>
+
               <Row>
-                <p>Github</p>
-                <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.repos_url.github[0]}>Github</a></Badge></p>
+                <Col md={3} className="left-wrapper">
+                  <p>Github</p>
+                </Col>
+                <Col md={9}className="right-wrapper">
+                  <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.repos_url.github[0]}>Github</a></Badge></p>
+                </Col>
               </Row>
             </Card.Text>
           </Card.Body>
         </Card>
 
-        <Card style={{ width: '20rem',marginTop:'0.5rem' }} className="marketDataCard">
+        <Card  className="card2">
               <Card.Body>
                 <Card.Title style={{textTransform:'capitalize'}}> {id} Market Stats</Card.Title>
                 <Card.Text id="market_data">
@@ -223,11 +273,14 @@ const configPrice = props.ChartDataPrice ? {
                 </Card.Text>
               </Card.Body>
             </Card>
-        </Col>
-        {/* Stock price chart started */}
-        <Col>
-          <ReactHighcharts config = {configPrice}/>
-          <Table bordered responsive>
+
+                  <div className="graph">
+            <ReactHighcharts config = {configPrice} id="lesgoo" />
+
+                  </div>
+
+            
+            <Table bordered responsive className="Datatable">
            <thead>
              <tr>
              
@@ -248,34 +301,8 @@ const configPrice = props.ChartDataPrice ? {
              </tr>
            </tbody>
          </Table>
-        </Col>
-        {/* Stock price chart ends */}
-        
-
-        {/* price change info strats */}
-        
-         
-        </Row>
-
-        <Col>
-<Row>
-        {/* basic info card starts */}
-      
-        {/* basic info card ends */}
-
-        {/* market stats info strtas */}
-        <Col  >
-            
-        </Col>
-
-        {/* markets stats info ends */}
-        </Row>
-        <Row>
-        
-        </Row>
-        </Col> 
-       {/* price change info ends */}
-      </Container>
+            <div className="space"> </div>
+      </div>
         :
         <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} />
       }
