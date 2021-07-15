@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import Table from 'react-bootstrap/Table';
-import { Container,Button } from 'react-bootstrap';
+import { Container,Button,Row,Col } from 'react-bootstrap';
 import Coin from './Coin'
 import '../CSS/Paginate.css' 
 import {connect} from 'react-redux'
@@ -18,69 +18,7 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import styled from "styled-components";
 const options = ["Ascending", "Descending"];
-const Main = styled("div")`
-  font-family: sans-serif;
-  background: #f0f0f0;
-  height: 100vh;
-`;
 
-const DropDownContainer = styled("div")`
-  
-  width:95px;
-  height:28px;
-  // padding: 0.4em 2em 0.4em 1em;
-
-`;
-
-const DropDownHeader = styled("div")`
-  padding: 5px 5px 5px 10px;
-  font-size: 16px;
-  color: #7666e4;
-  background: #ebe4e4;
-  border:1px solid #7666e4;
-  border-radius:25px;
-  height:28px;
-  width:105px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-`;
-
-const DropDownListContainer = styled("div")``
-
-;
-
-const DropDownList = styled("ul")`
-  padding: 0;
-  margin-top: 2.5px;
-  // border:1px solid #7666e4;
-  background: #C4C4C4;
-  width:105px;
-  box-sizing: border-box;
-  color: #7666e4;
-  font-size: 16px;
-  font-weight: 500;
-  height:70px;
-  border-radius:11px;
-  &:first-child {
-    padding-top: 0.5em;
-  }
-`;
-
-const ListItem = styled("li")`
-  list-style: none;
-  margin: 2.5px auto; 
-  background: #E8E8E8;
-  text-align:center;
-  width:90px;
-  border-radius:25px;
-  color:#b1afaf;
-  &:hover{
-    color:#7666e4;
-    cursor:pointer;
-  }
-
-`;
 const CoinsList = (props) => {
 // URL:https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false
 const {coinList,totalCount,loader}=props
@@ -94,13 +32,23 @@ const [orgTableData,setOrgTableData]=useState([])
 const [sortType,setSortType]=useState('asc')
 const [count,setCount]=useState(0)
 const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+const [selectedOption, setSelectedOption] = useState(null);
+const [sortOption,setSortOption]=useState('Ascending')
 const location = useLocation()
 
 const toggling = () => {
   setIsOpen(!isOpen)
   // changeOrder()
 };
+
+// const handleSortOption=()=>{
+//   if(selectedOption=="Ascending"){
+//     setSelectedOption('Descending')
+//   }
+//   else{
+//     setSelectedOption('Ascending')
+//   }
+// }
 
 const onOptionClicked = value => () => {
   setSelectedOption(value);
@@ -110,8 +58,13 @@ const onOptionClicked = value => () => {
 };
 const changeOrder=()=>{
   sortType==='asc'?setSortType('desc'):setSortType('asc')
+  // sortType==='asc' ?setSelectedOption('Ascending'):setSelectedOption('Descending')
 }
 
+
+useEffect(()=>{
+  sortType==='asc' ?setSortOption('Ascending'):setSortOption('Descending')
+},[sortType])
 
  
 const sorted=tableData.sort((a,b)=>{
@@ -193,35 +146,18 @@ useEffect(()=>{
     return (
         <div className="coin-app" style={{overflow:'auto'}}>
             <div className="sortDiv">
-                {/* <span className="sortIcon"><Icon icon={bxSort} style={{color: '#7666E4', fontSize: '19px'}} /></span> */}
                 <span className="sortText">Sort In</span>
-                <DropDownContainer>
-        <DropDownHeader onClick={toggling} >
-          {selectedOption || "Ascending"}
-          <span><Icon icon={arrowSort24Filled} style={{color: '#7666E4', fontSize: '17px'}} /></span>
-        </DropDownHeader>
-        {isOpen && (
-          <DropDownListContainer>
-            <DropDownList>
-              {options.map(option => (
-                <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-                  {option}
-                </ListItem>
-              ))}
-            </DropDownList>
-          </DropDownListContainer>
-        )}
-      </DropDownContainer>
-                {/* <select onChange={changeOrder} className="sortMenu" > */}
-                  {/* <option value="asc" style={{padding:'5px 5px'}}>Ascending</option>
-                  <option value="desc" style={{padding:'5px 5px'}}>Descending</option> */}
-                {/* </select> */}
+                <span className="sortoptionContainer" onClick={changeOrder}>{sortOption}
+                <span><Icon icon={arrowSort24Filled}  id="sortArrow"/></span>
+                </span>
+                
           </div>
          
         <Container fluid style={{margin:'35px 0px'}}>
         
         
 {!loader ?
+
         <Table striped bordered hover id="coinTable" responsive>
         <thead>
           <tr>
@@ -243,6 +179,7 @@ useEffect(()=>{
   
   
           </Table>:
+
           <Loader type="Grid" color="#7666e4" height={80} width={80} style={{'justify-content':'center','display':'flex'}} />}
           
           <Paginate totalCount={totalCount} handlePageClick={(Data)=>handlePageClick(Data.selected+1)}/>

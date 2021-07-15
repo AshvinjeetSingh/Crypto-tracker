@@ -80,7 +80,7 @@ const configPrice = props.ChartDataPrice ? {
   },
   chart: {
     height: 600,
-    width:700
+    width:800
     
   },
   containerProps:{ className: "test-class" },
@@ -151,6 +151,10 @@ const configPrice = props.ChartDataPrice ? {
 
  
   const style=props.singlecoinData && props.singlecoinData.market_data.price_change_percentage_24h<0?'red':'green'
+  const style7=props.singlecoinData && props.singlecoinData.market_data.price_change_percentage_7d<0?'red':'green'
+  const style14=props.singlecoinData && props.singlecoinData.market_data.price_change_percentage_14d<0?'red':'green'
+  const style30=props.singlecoinData && props.singlecoinData.market_data.price_change_percentage_30d<0?'red':'green'
+  const style1y=props.singlecoinData && props.singlecoinData.market_data.price_change_percentage_1y<0?'red':'green'
   const style2=props.singlecoinData && props.singlecoinData.market_data.ath_change_percentage.usd<0?'red':'green'
   const style3=props.singlecoinData && props.singlecoinData.market_data.atl_change_percentage.usd<0?'red':'green'
   
@@ -174,7 +178,7 @@ const configPrice = props.ChartDataPrice ? {
         <Card className="card1">
           <Card.Body >
             <Row style={{alignItems:'center'}}>
-              <Col className="d-flex">
+              <Col className="d-flex" xs={12}>
               <Card.Title style={{padding:'0px 10px'}}><img src={props.singlecoinData.image.thumb}/></Card.Title>
               <Card.Title>{props.singlecoinData.name}({props.singlecoinData.symbol})</Card.Title>  
               </Col>
@@ -202,7 +206,7 @@ const configPrice = props.ChartDataPrice ? {
                     const val=item!='' && item.split('/')[2].split('.')
                     
                     return(
-                      item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={item}>{val.length=='2'?val[0]:val[1]}</a></Badge></p>
+                      item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={item}>{val.length=='2'?val[0]:val[1]}</a></Badge></p>
                       )
                     })}
                   
@@ -217,7 +221,7 @@ const configPrice = props.ChartDataPrice ? {
                     {props.singlecoinData.links.blockchain_site.map((item)=>{  
                       const val=item!='' && item.split('/')[2].split('.')[0]     
                       return(
-                        item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={item}>{val}</a></Badge></p>
+                        item!=''&& <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={item}>{val}</a></Badge></p>
                         )
                       })}
                    
@@ -230,13 +234,13 @@ const configPrice = props.ChartDataPrice ? {
                 </Col>
                 <Col md={9} className="d-flex right-wrapper">
                   
-                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={`https://twitter.com/${props.singlecoinData.links.twitter_screen_name}`}>Twitter</a></Badge></p>
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} ><a style={{color:'white'}} href={`https://twitter.com/${props.singlecoinData.links.twitter_screen_name}`}>Twitter</a></Badge></p>
 
-                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.subreddit_url}>Reddit</a></Badge></p>
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={props.singlecoinData.links.subreddit_url}>Reddit</a></Badge></p>
 
-                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={`https://www.facebook.com/${props.singlecoinData.links.facebook_username}/`}>Facebook</a></Badge></p>
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={`https://www.facebook.com/${props.singlecoinData.links.facebook_username}/`}>Facebook</a></Badge></p>
 
-                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.official_forum_url[0]}>bitcointalk.org</a></Badge></p>
+                    <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={props.singlecoinData.links.official_forum_url[0]}>bitcointalk.org</a></Badge></p>
                  
                 </Col>
                   
@@ -248,7 +252,7 @@ const configPrice = props.ChartDataPrice ? {
                   <p>Github</p>
                 </Col>
                 <Col md={9}className="right-wrapper">
-                  <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}} variant="secondary" ><a style={{color:'white'}} href={props.singlecoinData.links.repos_url.github[0]}>Github</a></Badge></p>
+                  <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={props.singlecoinData.links.repos_url.github[0]}>Github</a></Badge></p>
                 </Col>
               </Row>
             </Card.Text>
@@ -267,9 +271,9 @@ const configPrice = props.ChartDataPrice ? {
                   }</span></p>
                   <p>24h Low / 24h High<span>{props.singlecoinData.market_data.low_24h.usd}/{props.singlecoinData.market_data.high_24h.usd}</span></p>
                   <p>Market Cap Rank<span>{props.singlecoinData.market_cap_rank}</span></p>
-                  <p>All-Time High	<span><span>{props.singlecoinData.market_data.ath.usd}</span><span style={{color:style2}}>{props.singlecoinData.market_data.ath_change_percentage.usd}</span></span></p>
+                  <p>All-Time High	<span><span>{props.singlecoinData.market_data.ath.usd}</span><span style={{color:style2}}>({props.singlecoinData.market_data.ath_change_percentage.usd}%)</span></span></p>
                   <p>All-Time Low<span><span>{props.singlecoinData.market_data.atl.usd}</span><span style={{color:style3}}>
-                  {props.singlecoinData.market_data.atl_change_percentage.usd}</span></span></p>
+                  ({props.singlecoinData.market_data.atl_change_percentage.usd}%)</span></span></p>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -293,11 +297,11 @@ const configPrice = props.ChartDataPrice ? {
            </thead>
            <tbody>
              <tr>
-                 <td>{props.singlecoinData.market_data.price_change_percentage_24h}</td>
-                 <td>{props.singlecoinData.market_data.price_change_percentage_7d}</td>
-                 <td>{props.singlecoinData.market_data.price_change_percentage_14d}</td>
-                 <td>{props.singlecoinData.market_data.price_change_percentage_30d}</td>
-                 <td>{props.singlecoinData.market_data.price_change_percentage_1y}</td>
+                 <td style={{color:style}}>{props.singlecoinData.market_data.price_change_percentage_24h}%</td>
+                 <td style={{color:style7}}>{props.singlecoinData.market_data.price_change_percentage_7d}%</td>
+                 <td style={{color:style14}}>{props.singlecoinData.market_data.price_change_percentage_14d}%</td>
+                 <td style={{color:style30}}>{props.singlecoinData.market_data.price_change_percentage_30d}%</td>
+                 <td style={{color:style1y}}>{props.singlecoinData.market_data.price_change_percentage_1y}%</td>
              </tr>
            </tbody>
          </Table>
