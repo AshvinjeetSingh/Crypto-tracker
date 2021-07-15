@@ -68,7 +68,7 @@ const Autosuggest = (props) => {
       return  <div  className="ListCoins">
         {
           matchCoins.map((item)=>{
-          return  <p className="autoSuggestValues" onClick={()=>suggestionSelectedValue(item)} style={{padding:'5px 10px',borderRadius: '15px',maxWidth: '100%',margin:' 5px 15px',background: '#E8E8E8',cursor:'pointer'}}>
+          return  <p className="autoSuggestValues" onClick={()=>suggestionSelectedValue(item)} style={{padding:'5px 10px',borderRadius: '15px',maxWidth: '100%',margin:' 5px 15px',cursor:'pointer'}}>
                        {item}
                     </p>
                   
