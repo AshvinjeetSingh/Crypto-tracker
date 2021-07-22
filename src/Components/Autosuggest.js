@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import {Form,Row} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {getAllCoinDataForAutoSuggest} from '../Store/Actions/Actions'
@@ -19,7 +19,22 @@ const Autosuggest = (props) => {
   const [value,setValue]=useState('')
   const [coins,setCoins]=useState([])
   const [matchCoins,setMatchCoins]=useState([])
-  
+  const node = useRef();
+
+  const handleClick = e => {
+    console.log(node)
+
+    // if (node && node.current.contains(e.target)) {
+    //   return;
+    // }
+    const rows=document.getElementById("ListCoins");
+    if(rows!=null || rows!=undefined){
+      rows.style.height="0"
+    }
+   
+    console.log(rows)
+    setValue('')
+  };
 
   useEffect(()=>{
     props.getAutoSuggestList()
@@ -56,17 +71,27 @@ const Autosuggest = (props) => {
 
   
   
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClick);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
+  
+  
   
   const renderSuggestions=()=>{
-    if(matchCoins.length<0){
+    if(matchCoins.length<=0){
       console.log(matchCoins)
-      return <div style={{minHeight:'50px',background:'red',width:'100%'}}>
+      return <div className="ListCoinsNoRecord" >
           <p>No record found</p>
         </div>
     }
     else{
-      return  <div  className="ListCoins">
+      console.log(matchCoins.length)
+      return  <div  className="ListCoins" id="ListCoins" ref={node}>
         {
+          
           matchCoins.map((item)=>{
           return  <p className="autoSuggestValues" onClick={()=>suggestionSelectedValue(item)} style={{padding:'5px 10px',borderRadius: '15px',maxWidth: '100%',margin:' 5px 15px',cursor:'pointer'}}>
                        {item}
@@ -80,7 +105,7 @@ const Autosuggest = (props) => {
   
   return (
     <>
-      <div  id="searchBar">
+      <div  id="searchBar" >
       <input value={value} type="text" placeholder="Search Your Coin" onChange={onTextChanged} className="searchCoinInput"/>
       {value.length>0 && 
         
