@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import moment from 'moment';
 import  {getSingleCoinData,getCoinChartData} from '../Store/Actions/Actions'
 import {withGetScreen} from 'react-getscreen'
+import {useLocation} from 'react-router-dom'
 import '../CSS/singlecoin.css'
 const SingleCoin = (props) => {
 
@@ -80,10 +81,9 @@ const configPrice = props.ChartDataPrice ? {
   },
   chart: {
     height: 600,
-    width:800
+    
     
   },
-  containerProps:{ className: "test-class" },
   credits: {
     enabled: false
   },
@@ -131,7 +131,7 @@ const configPrice = props.ChartDataPrice ? {
     rules: [{
         condition: {
          
-            maxWidth: 550
+            maxWidth: 700
         },
         chartOptions: {
             chart: {
@@ -279,7 +279,7 @@ const configPrice = props.ChartDataPrice ? {
             </Card>
 
                   <div className="graph">
-            <ReactHighcharts config = {configPrice} id="lesgoo" />
+            <ReactHighcharts config = {configPrice} options={options} idomProps = {{id: 'chartId'}} containerProps={{ className: "test-class" }} />
 
                   </div>
 

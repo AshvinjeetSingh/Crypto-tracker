@@ -34,14 +34,33 @@
 
 .ListCoins{
     position: absolute;
-    height: 12rem;
-    max-height: 11rem;
-    overflow-y: auto;
+    height: 12.5rem;
+    max-height: 12.5rem;
+    overflow-y: hidden;
     width: 17rem;
     max-width: 17rem;
     padding: 0px;
     background-color: #C4C4C4;
     border-radius: 11px;
+}
+
+
+.ListCoinsNoRecord {
+position: absolute;
+height: 2.5rem;
+max-height: 2.5rem;
+overflow-y: hidden;
+width: 17rem;
+max-width: 17rem;
+padding: 0px;
+background-color: #C4C4C4;
+border-radius: 5px;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;}
+.ListCoinsNoRecord p{
+    margin: 0!important;
 }
 
 #searchBar{
