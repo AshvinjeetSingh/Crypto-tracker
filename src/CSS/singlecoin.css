@@ -2,6 +2,7 @@
     padding:10px;
     display: grid;
     grid-template-columns:auto 250px 250px auto auto auto;
+     /* grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); */
     grid-template-rows: auto auto auto;
     grid-gap: 10px;
     justify-content: space-evenly;
@@ -10,6 +11,8 @@
     ".  card1 card1 graph graph ."
     ".  card2 card2 graph graph .";
     overflow-y: hidden;
+    /* grid-auto-flow: dense; */
+    /* grid-auto-columns: minmax(260px, 260px); */
   }
   .card1{
       grid-area: card1!important;
@@ -89,13 +92,64 @@ nav>.breadcrumb>li.breadcrumb-item a{
 
 
 @media screen and (max-width:1200px){
-    .dataCards{
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0;
-    }
-    .marketDataCard{
-        margin-top: 0px!important;
-        margin-left: 0.5rem;
-    }
+    .grid-container {
+        padding:10px;
+        display: grid;
+        grid-template-columns:auto 250px 250px auto auto auto;
+         /* grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); */
+        grid-template-rows: auto auto auto auto;
+        grid-gap: 10px;
+        justify-content: space-evenly;
+        grid-template-areas: 
+        ". card1 card1 card2 card2 ."
+        ".  card1 card1 card2 card2 ."
+        ".  table table table table ."
+        ".  graph graph graph graph .";
+        overflow-y: hidden;
+        /* grid-auto-flow: dense; */
+        /* grid-auto-columns: minmax(260px, 260px); */
+      }
+}
+
+@media screen and (max-width:991px){
+    .grid-container {
+        padding:10px;
+        display: grid;
+        grid-template-columns:auto 250px 250px auto auto auto;
+         /* grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); */
+        grid-template-rows: auto auto auto auto;
+        grid-gap: 10px;
+        justify-content: space-evenly;
+        grid-template-areas: 
+        ". card1 card1 card1 card1 ."
+        ".  card2 card2 card2 card2 ."
+        ".  table table table table ."
+        ".  graph graph graph graph .";
+        overflow-y: hidden;
+        /* grid-auto-flow: dense; */
+        /* grid-auto-columns: minmax(260px, 260px); */
+      }
+
+      .card1,.card2{
+          width:45rem;
+          margin:15px auto;
+      }
+}
+
+@media screen and (max-width:768px){
+    
+
+      .card1,.card2{
+          width:35rem;
+          margin:15px auto;
+      }
+
+      .card1 .row {
+          flex-wrap:nowrap;
+          align-items:center;
+          
+      }
+      .right-wrapper,.percentageVal {
+          justify-content:flex-end
+      }
 }

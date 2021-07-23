@@ -74,9 +74,7 @@ const sorted=tableData.sort((a,b)=>{
 const handlePageClick=(page)=>{
   props.getList(page)
   // alert("hello")
-  setCount((prevState)=>prevState+1)
-  console.log(count
-    )
+  setCount(page)
 }
 
 const history = useHistory();
@@ -100,9 +98,7 @@ const getData=()=> {
 const getTableData=()=>{
 return sorted.map((coinid,index)=>{
 
-const idkey=(count*100)-100+index+1
-for(let i=0;i<sorted.length;i++) {
- 
+const idkey=(count-1)*sorted.length+index+1;
 return (<tr onClick={()=>{
   history.push(`/coins/${coinid.id}`)
 }}><Coin 
@@ -118,7 +114,7 @@ marketcap={coinid.market_cap.toLocaleString()}
 realId={coinid.id}
 // sparkline={coinid.market_cap_rank}
 /></tr>)
-}})};
+})};
 
 useEffect(()=>{
   handlePageClick(1)

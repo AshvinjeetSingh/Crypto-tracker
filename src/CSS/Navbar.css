@@ -141,10 +141,35 @@ align-items: center;}
     transform: translateY(-50%);
     transition: left 0.3s ease-out;
 }
+@media only screen and (max-width: 768px) {
+    
+    .AutoSuggestandtoggle span{
+        display:none
+    }
+    
+    
+}
     
 @media only screen and (max-width: 574px) {
     .navbar-brand{
         margin: auto;
     }
+    .navbar{
+        height:150px;
+        max-height:150px
+    }
+    .navbar{
+        justify-content: center;
+     }
+     .AutoSuggestandtoggle{
+         width: 300px;
+         margin: auto;
+         flex-wrap: wrap-reverse;
+        width: 300px;
+        justify-content: center;
+        align-items: center;
+     }
+     
+    
     
 }

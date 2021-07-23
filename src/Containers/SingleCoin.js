@@ -191,7 +191,7 @@ const configPrice = props.ChartDataPrice ? {
                 <Col md={3}auto className="d-flex">
                   <p>{props.singlecoinData.market_data.current_price.usd}</p>
                 </Col>
-                <Col md={9}>
+                <Col md={9} className="d-flex percentageVal">
                   <p style={{color:style}}>{props.singlecoinData.market_data.price_change_percentage_24h}%</p>
                 </Col>
               </Row>
@@ -200,7 +200,7 @@ const configPrice = props.ChartDataPrice ? {
                 <Col md={3}className="left-wrapper">
                   <p >Homepage</p>
                 </Col>
-                <Col md={9} className="right-wrapper">
+                <Col md={9}  className=" right-wrapper d-flex">
                
                   {props.singlecoinData.links.homepage.map((item)=>{             
                     const val=item!='' && item.split('/')[2].split('.')
@@ -251,7 +251,7 @@ const configPrice = props.ChartDataPrice ? {
                 <Col md={3} className="left-wrapper">
                   <p>Github</p>
                 </Col>
-                <Col md={9}className="right-wrapper">
+                <Col md={9}className="right-wrapper d-flex">
                   <p><Badge style={{padding:'5px 10px',margin:'0px 5px'}}  ><a style={{color:'white'}} href={props.singlecoinData.links.repos_url.github[0]}>Github</a></Badge></p>
                 </Col>
               </Row>
