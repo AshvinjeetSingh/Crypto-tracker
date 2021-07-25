@@ -279,12 +279,12 @@ const configPrice = props.ChartDataPrice ? {
             </Card>
 
                   <div className="graph">
-            <ReactHighcharts config = {configPrice} options={options} idomProps = {{id: 'chartId'}} containerProps={{ className: "test-class" }} />
+            <ReactHighcharts config = {configPrice} options={options} idomProps = {{id: 'chartId'}} containerProps = {{ className: 'chartContainer'}} />
 
                   </div>
 
             
-            <Table bordered responsive className="Datatable">
+            <Table bordered  className="Datatable">
            <thead>
              <tr>
              

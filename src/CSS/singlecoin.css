@@ -36,6 +36,11 @@
   .space{
       grid-area:'space'
   }
+  .Datatable{
+      max-width: 840px;
+      width: 840px;
+      margin: auto;
+  }
   .Datatable tr>th,.Datatable tr>td{
     border: 1px solid #6c757d;
   }
@@ -109,6 +114,9 @@ nav>.breadcrumb>li.breadcrumb-item a{
         /* grid-auto-flow: dense; */
         /* grid-auto-columns: minmax(260px, 260px); */
       }
+      .Datatable{
+          grid-area: table;
+      }
 }
 
 @media screen and (max-width:991px){
@@ -134,7 +142,15 @@ nav>.breadcrumb>li.breadcrumb-item a{
           width:45rem;
           margin:15px auto;
       }
-}
+      .Datatable{
+          width: 560px;
+      }
+      svg.highcharts-root {
+        width: 35rem!important;
+        margin: 0 auto;
+        height: 25rem!important;
+        display: flex;
+}}
 
 @media screen and (max-width:768px){
     
