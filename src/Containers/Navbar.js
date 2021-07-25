@@ -46,11 +46,11 @@ const NavbarTitle = (props) => {
     return (
         <>
         <Navbar expand="lg" className="navbar align-items-center">
-            <Navbar.Brand href="#home"> 
+            <Navbar.Brand href="/"> 
               <img src={image} style={{width:'100%',filter:'invert(1)'}}/>
             </Navbar.Brand>
             
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex'}} className="AutoSuggestandtoggle">
                   {
                     pathName=='/' && <Autosuggest coinId={props.coinId}/>
                   }

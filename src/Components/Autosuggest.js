@@ -13,28 +13,102 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { useHistory } from "react-router-dom";
 import Scrollbar from "react-scrollbars-custom";
+function useOutsideAlerter(ref) {
+  useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        const rows = document.getElementById('ListCoins')
+        if(rows!=null && rows != undefined)
+        { 
+          rows.style.display="block"
+          
+          // alert("hello tehre")
+        }
+          if (ref.current && !ref.current.contains(event.target)) {
+              // alert("You clicked outside of me!");
+              const rows = document.getElementById('ListCoins')
+              rows.style.display="none"
+              // console.log("rows are" ,rows)
+              rows!=null || rows != undefined && console.log(rows.style.display)
+          }
+      }
+
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+          // Unbind the event listener on clean up
+          document.removeEventListener("mousedown", handleClickOutside);
+      };
+  }, [ref]);
+}
 
 const Autosuggest = (props) => {
   const history = useHistory();
   const [value,setValue]=useState('')
   const [coins,setCoins]=useState([])
   const [matchCoins,setMatchCoins]=useState([])
-  const node = useRef();
+  const node = useRef(null);
+  const elem= useRef()
+  useOutsideAlerter(node);
 
-  const handleClick = e => {
-    console.log(node)
-
-    // if (node && node.current.contains(e.target)) {
-    //   return;
-    // }
-    const rows=document.getElementById("ListCoins");
-    if(rows!=null || rows!=undefined){
-      rows.style.height="0"
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      const rows = document.getElementById('ListCoins')
+      if(rows!=null && rows != undefined)
+      { 
+        rows.style.display="block"
+       
+        
+        // alert("hello tehre")
+      }
+        if (node.current && !node.current.contains(event.target)) {
+            // alert("You clicked outside of me!");
+            const rows = document.getElementById('ListCoins')
+            rows.style.display="none"
+             setValue('')
+            // console.log("rows are" ,rows)
+            rows!=null || rows != undefined && console.log(rows.style.display)
+        }
     }
-   
-    console.log(rows)
-    setValue('')
-  };
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+    };
+}, [node]);
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   useEffect(()=>{
     props.getAutoSuggestList()
@@ -60,7 +134,7 @@ const Autosuggest = (props) => {
   useEffect(()=>{
     
     if(matchCoins.length>0){
-      console.log("indide",matchCoins)
+      console.log("inside",matchCoins)
     }
   },[matchCoins])
   const suggestionSelectedValue=(value)=>{
@@ -71,21 +145,22 @@ const Autosuggest = (props) => {
 
   
   
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClick);
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClick);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClick);
+  //   };
+  // }, []);
   
   
   
   const renderSuggestions=()=>{
     if(matchCoins.length<=0){
       console.log(matchCoins)
-      return <div className="ListCoinsNoRecord" >
+      return <div className="ListCoinsNoRecord" id="ListCoins" ref={node}>
           <p>No record found</p>
         </div>
+        
     }
     else{
       console.log(matchCoins.length)
@@ -93,7 +168,7 @@ const Autosuggest = (props) => {
         {
           
           matchCoins.map((item)=>{
-          return  <p className="autoSuggestValues" onClick={()=>suggestionSelectedValue(item)} style={{padding:'5px 10px',borderRadius: '15px',maxWidth: '100%',margin:' 5px 15px',cursor:'pointer'}}>
+          return  <p ref={elem} id="pval" className="autoSuggestValues" onClick={()=>suggestionSelectedValue(item)} style={{padding:'5px 10px',borderRadius: '15px',maxWidth: '100%',margin:' 5px 15px',cursor:'pointer'}}>
                        {item}
                     </p>
                   
