@@ -8,7 +8,7 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 import SingleCoin from './Containers/SingleCoin';
 import { keepTheme  } from './Components/Theme-context'
 import { useHistory } from 'react-router-dom'
-
+import Footer from  './Containers/Footer'
 
 
 
@@ -35,16 +35,21 @@ const  App=() =>{
   keepTheme();
  })
  useTracking('UA-USE-YOURS-HERE')
-
+ const style={
+  "min-height": "calc(100vh - 54px)"
+ }
   return (
     <>
-    
+    <div style={style}>
     <NavbarTitle/>
     <Switch >
       <Route path='/' exact component={CoinsList}/>
       <Route path='/coins/:id' exact component={SingleCoin}/>
       <Redirect to = {'/'}/>
     </Switch>
+    </div>
+    
+    <Footer/>
     </>
   );
 }
