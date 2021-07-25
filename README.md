@@ -1,6 +1,30 @@
 # KNOW YOUR COIN aka CRYPTOCURRENCY TRACKER
 This project is available on  https://knowyourcoin.netlify.app/
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![MIT License][license-shield]][license-url]
 
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/AshvinjeetSingh/Crypto-tracker">
+    <img src="/src/Images/Logo.png" alt="Logo" width="280" height="100" >
+  </a>
+
+  <h3 align="center">Know Your Coin</h3>
+
+  <p align="center">
+    <a href="https://github.com/AshvinjeetSingh/Crypto-tracker"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://knowyourcoin.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/AshvinjeetSingh/Crypto-tracker/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/AshvinjeetSingh/Crypto-tracker/issues">Request Feature</a>
+  </p>
+</p>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
