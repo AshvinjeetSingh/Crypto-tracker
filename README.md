@@ -10,7 +10,7 @@ This project is available on  https://knowyourcoin.netlify.app/
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#Tools-used">Tools used</a></li>
-        <li><a href="#Tech-used">Technology/Dependencies used</a></li>
+        <li><a href="#Technology/Dependencies-used">Technology/Dependencies used</a></li>
       </ul>
     </li>
     <li>
