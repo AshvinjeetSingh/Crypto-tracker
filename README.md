@@ -10,7 +10,7 @@ This project is available on  https://knowyourcoin.netlify.app/
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#Tools-used">Tools used</a></li>
-        <li><a href="#Technology/Dependencies-used">Technology/Dependencies used</a></li>
+        <li><a href="#Technology-used">Technology used</a></li>
       </ul>
     </li>
     <li>
@@ -45,7 +45,7 @@ In this modern era when everybody is migrating to a digital world one should be 
 4. Netlify(For CI/CD operations)
 5. Trello(For tracking issues)
 
-### Technology/Dependencies Used
+### Technology Used
 1. [ReactJS](https://reactjs.org/)
 2. RestAPI [CoinGecko](https://www.coingecko.com/en)
 3. [React-Bootstrap](https://react-bootstrap.github.io/)
