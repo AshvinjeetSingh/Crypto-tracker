@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# KNOW YOUR COIN aka CRYPTOCURRENCY TRACKER
+This project is available on  https://knowyourcoin.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#Tools-used">Tools used</a></li>
+        <li><a href="#Tech-used">Technology/Dependencies used</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#folder-structure">Folder Structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+In this modern era when everybody is migrating to a digital world one should be well aware of crypto revolution. and how the prices of different cryptos are increading or decreasing so in order to track these prices I have developed a web platfoem from where user can see different cryptos available in the market and what is their price shift/Change along with detailed view of every coin
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### Tools Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Figma(For design)
+2. VScode(For development)
+3. Github(For version control)
+4. Netlify(For CI/CD operations)
+5. Trello(For tracking issues)
 
-### `npm run build`
+### Technology/Dependencies Used
+1. [ReactJS](https://reactjs.org/)
+2. RestAPI [CoinGecko](https://www.coingecko.com/en)
+3. [React-Bootstrap](https://react-bootstrap.github.io/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/AshvinjeetSingh/Crypto-tracker.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Folder Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  ![image](https://user-images.githubusercontent.com/51511908/126912128-a631ddbe-d0e9-4612-984c-dc775dadb34a.png)
 
-## Learn More
+## Usage
+Once the application is loaded user will get a paginated response of cryptocoins that are available in market for public trade <br/>
+This Screen will give user basic details of individual coins that are available for trade<br/>
+![image](https://user-images.githubusercontent.com/51511908/126913225-88203235-ac26-46fe-b323-76d03eb799ff.png)<br/>
+User can perform different operations  in this screen<br/>
+1. User can sort the values the table
+2. User can search his/her desired coin from the b=avbar which is a autosuggest field and will give user top 5 according to input value
+3. User can select his/her desired coin from the list which will allow user to navigate to detailed coin view
+<br/>
+If user will select some coin it will be navigated to that pecifc coin which will give user  a detailed view of that specific coin 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/51511908/126913446-54b29e48-4af5-477a-a4cd-ead51313fd46.png)
+_Added screenshot for refernce_
+_For more , please refer to the [Website](https://knowyourcoin.netlify.app/) or refer to figma file present in figmaDesign folder of the project for userflow or design_
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<!-- ROADMAP -->
+## Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+See the [open issues](https://github.com/AshvinjeetSingh/Crypto-tracker/issues) for a list of proposed features (and known issues).
 
-### Making a Progressive Web App
+<!-- CONTRIBUTING -->
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-### Advanced Configuration
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<!-- LICENSE -->
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Distributed under the MIT License. See `LICENSE` for more information.
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- CONTACT -->
+## Contact
+
+Ashvinjeet Singh - ashvinjeetsingh98@gmail.com
+
+Project Link: [https://github.com/AshvinjeetSingh/Crypto-tracker](https://github.com/AshvinjeetSingh/Crypto-tracker)
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+* [Img Shields](https://shields.io)
+* [Choose an Open Source License](https://choosealicense.com)
+* [Netlify](https://www.netlify.com/)
+* [Trello](https://trello.com/)
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->>
+
+[contributors-url]: https://github.com/AshvinjeetSingh/Crypto-tracker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/AshvinjeetSingh/Crypto-tracker
+[forks-url]: https://github.com/AshvinjeetSingh/Crypto-tracker/network/members
+[stars-shield]: https://img.shields.io/github/stars/AshvinjeetSingh/Crypto-tracker
+[stars-url]: https://github.com/AshvinjeetSingh/Crypto-tracker/stargazers
+[issues-url]: https://github.com/AshvinjeetSingh/Crypto-tracker/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.co/AshvinjeetSingh/Crypto-tracker/blob/master/LICENSE.txt
+[linkedin-url]: https://www.linkedin.com/in/ashvinjeet-singh-7323b9179/
+[product-screenshot]: images/productscreenshot.png
+
