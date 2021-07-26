@@ -6,8 +6,8 @@
   --pagination-color:#000;
   --pagination-color-active:#fff;
   --pagination-background-hover:#716e6e;
-  --breadcrumb-background:#d4d4d4
-
+  --breadcrumb-background:#d4d4d4;
+  --hover-color:#9c9c9c;
   
 }
 .theme-dark {
@@ -19,6 +19,7 @@
     --pagination-color-active:#fff;
     --pagination-background-hover:#716e6e;
     --breadcrumb-background:#353535;
+    --hover-color:#252323;
 
 
   }
@@ -43,6 +44,10 @@
    
     border: 0px;
   }
+  #coinTable tbody tr:hover{
+    cursor: pointer;
+    background-color: var(--hover-color)!important;
+}
   
 
   #coinTable td{
@@ -70,7 +75,6 @@
 
   #sortArrow{
     color: var(--text)!important;
-
   }
   .sortoptionContainer{
     border:1px solid var(--text);
@@ -90,6 +94,8 @@
     background-color: #7666E4;
 
   }
+
+  
 
   .pagination > li > a:hover{
     background-color: var(--pagination-background-hover) ;
@@ -120,5 +126,8 @@ nav .breadcrumb>li:nth-child(2) a{
   .Datatable{
     background-color: var(--dark-background);
     color: var(--text)!important;
+  }
 
+  .footer{
+    color: #fff!important;
   }

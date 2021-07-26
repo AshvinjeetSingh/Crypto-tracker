@@ -27,10 +27,7 @@
         
     }
 
-#coinTable tr:hover{
-    cursor: pointer;
-    background-color: #252323!important;
-}
+
 
     #coinTable td:first-child {
         border-left-style: solid;

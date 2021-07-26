@@ -4,7 +4,7 @@ import { Icon, InlineIcon } from '@iconify/react';
 
 const Footer = () => {
     return (
-        <div className="d-flex align-items-center justify-content-around py-2 px-2" style={{background:'#7666E4'}}>
+        <div className="d-flex align-items-center justify-content-around py-2 px-2 footer" style={{background:'#7666E4'}}>
             <div>
                 Created by Ashvinjeet Singh
                 <span id="year">&copy; {new Date().getFullYear()}</span>
