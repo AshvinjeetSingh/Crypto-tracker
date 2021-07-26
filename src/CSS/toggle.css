@@ -1,0 +1,133 @@
+.theme-light {
+  --text: #616161;
+  --light-background: #EBE4E4;
+  --dark-background: #d4d4d4;
+  --purple:#7666e4;
+  --pagination-color:#000;
+  --pagination-color-active:#fff;
+  --pagination-background-hover:#716e6e;
+  --breadcrumb-background:#d4d4d4;
+  --hover-color:#9c9c9c;
+  
+}
+.theme-dark {
+    --text: #DFDFDF;  
+    --dark-background: #353535;
+    --light-background: #515151;
+    --purple:#7666e4;
+    --pagination-color:#fff;
+    --pagination-color-active:#fff;
+    --pagination-background-hover:#716e6e;
+    --breadcrumb-background:#353535;
+    --hover-color:#252323;
+
+
+  }
+
+
+  html, #root {
+    background-color: var(--light-background);
+    color: var(--text);
+  }
+  #coinTable thead{
+    background-color: var(--light-background);
+    color: var(--text);
+    border: 0px;
+  }
+
+  .table-striped tbody tr{
+    background-color: var(--dark-background)!important;
+
+  }
+
+  #coinTable thead th{
+   
+    border: 0px;
+  }
+  #coinTable tbody tr:hover{
+    cursor: pointer;
+    background-color: var(--hover-color)!important;
+}
+  
+
+  #coinTable td{
+    border: 0px;
+    color: var(--text);
+  }
+  #searchBar input  {
+    background-color: var(--light-background);
+    color: var(--text);
+  }
+  #searchBar input::placeholder  {
+    color: var(--text);
+  }
+  .ListCoins{
+    background-color: var(--dark-background);
+    color: var(--text);
+  }
+  .ListCoins p{
+    background-color: var(--light-background);
+    color: var(--text);
+  }
+  .sortText{
+    color: var(--text);
+  }
+
+  #sortArrow{
+    color: var(--text)!important;
+  }
+  .sortoptionContainer{
+    border:1px solid var(--text);
+    border-radius: 5px;
+  }
+
+  .pagination > li > a{
+    background-color: var(--dark-background);
+    color: var(--pagination-color)!important;
+    border: 1px solid var(--text)!important;
+  }
+
+  .pagination > .active > a{
+    
+    border-color: var(--light-background);
+    color:var(--pagination-color-active)!important;
+    background-color: #7666E4;
+
+  }
+
+  
+
+  .pagination > li > a:hover{
+    background-color: var(--pagination-background-hover) ;
+    color: var(--dark-background)!important;
+
+  }
+
+  nav>.breadcrumb{
+    background-color: var(--breadcrumb-background);
+    /* box-shadow: 2px 2px 20px 0px var(--text); */
+}
+nav .breadcrumb>li:nth-child(2) a{
+   
+  color:var(--text)!important;
+}
+
+.breadcrumb-item+.breadcrumb-item::before{
+  color:var(--text)!important;
+}
+  .grid-container .card .card-body{
+      background-color: var(--dark-background);
+      border: 0px!important;
+      border-radius: 5px!important;
+      color: var(--text)!important;
+
+  }
+
+  .Datatable{
+    background-color: var(--dark-background);
+    color: var(--text)!important;
+  }
+
+  .footer{
+    color: #fff!important;
+  }

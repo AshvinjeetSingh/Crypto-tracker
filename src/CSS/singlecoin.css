@@ -1,0 +1,171 @@
+.grid-container {
+    padding:10px;
+    display: grid;
+    grid-template-columns:auto 250px 250px auto auto auto;
+     /* grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); */
+    grid-template-rows: auto auto auto;
+    grid-gap: 10px;
+    justify-content: space-evenly;
+    grid-template-areas: 
+    ". card1 card1 table table ."
+    ".  card1 card1 graph graph ."
+    ".  card2 card2 graph graph .";
+    overflow-y: hidden;
+    /* grid-auto-flow: dense; */
+    /* grid-auto-columns: minmax(260px, 260px); */
+  }
+  .card1{
+      grid-area: card1!important;
+      border-radius: 15px!important;
+      /* padding: 10px 10px; */
+      border: 0px!important;
+  }
+  .card2{
+      grid-area :card2!important;
+      border-radius: 15px!important;
+      border: 0px!important;
+
+  }
+
+  .graph{
+      grid-area: graph!important;
+  }
+  .table-responsive{
+      grid-area: table!important;
+  }
+  .space{
+      grid-area:'space'
+  }
+  .Datatable{
+      max-width: 840px;
+      width: 840px;
+      margin: auto;
+  }
+  .Datatable tr>th,.Datatable tr>td{
+    border: 1px solid #6c757d;
+  }
+
+#market_data p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Datatable th:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+
+.Datatable td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+    
+
+/*  */
+
+
+
+.left-wrapper.col {
+    flex: 0.2 0 !important;
+    padding: 0;
+}
+
+.right-wrapper.col {
+    flex: 1 1 !important;
+    padding: 0;
+
+}
+.badge{
+   text-transform: capitalize;
+   background-color: #7666E4;
+}
+.col{
+    flex:0!important
+}
+
+#highcharts-yeup7vy-9515{
+    width:550px;
+}
+
+
+nav>.breadcrumb>li.breadcrumb-item a{
+    color:#7666e4
+}
+
+
+@media screen and (max-width:1200px){
+    .grid-container {
+        padding:10px;
+        display: grid;
+        grid-template-columns:auto 250px 250px auto auto auto;
+         /* grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); */
+        grid-template-rows: auto auto auto auto;
+        grid-gap: 10px;
+        justify-content: space-evenly;
+        grid-template-areas: 
+        ". card1 card1 card2 card2 ."
+        ".  card1 card1 card2 card2 ."
+        ".  table table table table ."
+        ".  graph graph graph graph .";
+        overflow-y: hidden;
+        /* grid-auto-flow: dense; */
+        /* grid-auto-columns: minmax(260px, 260px); */
+      }
+      .Datatable{
+          grid-area: table;
+      }
+}
+
+@media screen and (max-width:991px){
+    .grid-container {
+        padding:10px;
+        display: grid;
+        grid-template-columns:auto 250px 250px auto auto auto;
+         /* grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); */
+        grid-template-rows: auto auto auto auto;
+        grid-gap: 10px;
+        justify-content: space-evenly;
+        grid-template-areas: 
+        ". card1 card1 card1 card1 ."
+        ".  card2 card2 card2 card2 ."
+        ".  table table table table ."
+        ".  graph graph graph graph .";
+        overflow-y: hidden;
+        /* grid-auto-flow: dense; */
+        /* grid-auto-columns: minmax(260px, 260px); */
+      }
+
+      .card1,.card2{
+          width:45rem;
+          margin:15px auto;
+      }
+      .Datatable{
+          width: 560px;
+      }
+      svg.highcharts-root {
+        width: 35rem!important;
+        margin: 0 auto;
+        height: 25rem!important;
+        display: flex;
+}}
+
+@media screen and (max-width:768px){
+    
+
+      .card1,.card2{
+          width:35rem;
+          margin:15px auto;
+      }
+
+      .card1 .row {
+          flex-wrap:nowrap;
+          align-items:center;
+          
+      }
+      .right-wrapper,.percentageVal {
+          justify-content:flex-end
+      }
+}
